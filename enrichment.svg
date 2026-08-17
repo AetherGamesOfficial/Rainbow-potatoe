@@ -1,0 +1,1283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- education-loading-handoff-20260816 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="position:fixed;inset:0;width:100%;height:100%;display:block;margin:0;padding:0;background:#121212 url('https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png') center / cover no-repeat;">
+  <title>enrichment</title>
+  <style>
+    html, body, svg, foreignObject { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #121212 url('https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png') center / cover no-repeat; }
+    foreignObject { display: block; }
+    iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; margin: 0; padding: 0; display: block; background: #121212 url('https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png') center / cover no-repeat; }
+  </style>
+  <foreignObject x="0" y="0" width="100%" height="100%">
+    <iframe xmlns="http://www.w3.org/1999/xhtml" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Activities&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;style&gt;
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #121212 url(&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png&quot;) center / cover fixed no-repeat;
+            color: white;
+            font-family: &quot;Courier New&quot;, Courier, monospace;
+        }
+
+        .bubble-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            left: var(--start-x);
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            opacity: var(--max-opacity);
+            animation: floatUp var(--speed) linear infinite;
+            animation-delay: var(--delay);
+            background: var(--color);
+            box-shadow: 0 0 15px var(--color);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: var(--max-opacity);
+            }
+            50% {
+                opacity: calc(var(--max-opacity) * 1.5);
+            }
+            100% {
+                transform: translateY(-110vh) translateX(var(--drift-x));
+                opacity: 0;
+            }
+        }
+
+        .activities-shell {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            padding: 102px 28px 28px;
+            gap: 20px;
+        }
+
+        .activities-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .activities-title {
+            margin: 0;
+            color: #ffffff;
+            font-size: 42px;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .activity-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .activity-input,
+        .activity-select,
+        .activity-button {
+            background-color: black;
+            border: 4px solid white;
+            border-radius: 20px;
+            color: white;
+            font: inherit;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .activity-input {
+            width: min(560px, 62vw);
+            padding: 12px 18px;
+        }
+
+        .activity-select,
+        .activity-button {
+            padding: 12px 16px;
+            cursor: pointer;
+        }
+
+        .activity-button {
+            transition: all 0.2s ease;
+        }
+
+        .activity-button:hover {
+            transform: scale(1.05);
+            background-color: #222;
+        }
+
+        .status {
+            min-height: 20px;
+            color: #ffffff;
+            font-size: 14px;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+        }
+
+        .games-grid {
+            min-height: 0;
+            overflow: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+            padding-right: 6px;
+        }
+
+        .game-card {
+            min-height: 190px;
+            background-color: black;
+            border: 4px solid white;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+        }
+
+        .game-card:hover {
+            transform: scale(1.03);
+            background-color: #222;
+        }
+
+        .game-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #111;
+        }
+
+        .game-card span {
+            padding: 10px;
+            font-size: 14px;
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+        }
+
+        .appleseed {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            padding: 10px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #ffffff;
+            z-index: 50;
+            min-width: 320px;
+            gap: 22px;
+        }
+
+        .homebutton {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .homebutton:hover {
+            transform: scale(1.15);
+            opacity: 0.8;
+        }
+
+        .home-icon {
+            position: relative;
+            display: block;
+            width: 38px;
+            height: 34px;
+        }
+
+        .home-icon::before {
+            content: &quot;&quot;;
+            position: absolute;
+            left: 4px;
+            top: 12px;
+            width: 30px;
+            height: 22px;
+            background: #ffffff;
+            clip-path: polygon(0 0, 50% 0, 100% 0, 100% 100%, 63% 100%, 63% 54%, 37% 54%, 37% 100%, 0 100%);
+        }
+
+        .home-icon::after {
+            content: &quot;&quot;;
+            position: absolute;
+            left: 2px;
+            top: 0;
+            width: 34px;
+            height: 28px;
+            background: #ffffff;
+            clip-path: polygon(50% 0, 100% 58%, 90% 68%, 50% 24%, 10% 68%, 0 58%);
+        }
+
+        .home-chimney {
+            position: absolute;
+            right: 5px;
+            top: 3px;
+            width: 8px;
+            height: 15px;
+            background: #ffffff;
+            border-radius: 2px 2px 0 0;
+        }
+
+        .nav-action {
+            width: 56px;
+            height: 52px;
+            padding: 0;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .nav-action:hover {
+            transform: scale(1.12);
+            opacity: 0.8;
+        }
+
+        .controller-svg {
+            width: 58px;
+            height: 42px;
+            display: block;
+        }
+
+        .controller-icon {
+            position: relative;
+            width: 50px;
+            height: 29px;
+            border: 3px solid #ffffff;
+            border-radius: 20px 20px 14px 14px;
+            box-sizing: border-box;
+            transform: translateX(0);
+        }
+
+        .controller-icon::before,
+        .controller-icon::after {
+            content: &quot;&quot;;
+            position: absolute;
+            top: 12px;
+            width: 13px;
+            height: 20px;
+            border: 3px solid #ffffff;
+            border-top: 0;
+            background: black;
+            box-sizing: border-box;
+        }
+
+        .controller-icon::before {
+            left: -9px;
+            border-radius: 0 0 13px 13px;
+            transform: rotate(15deg);
+        }
+
+        .controller-icon::after {
+            right: -9px;
+            border-radius: 0 0 13px 13px;
+            transform: rotate(-15deg);
+        }
+
+        .controller-bumper {
+            position: absolute;
+            top: -8px;
+            width: 16px;
+            height: 9px;
+            border: 3px solid #ffffff;
+            border-bottom: 0;
+            border-radius: 12px 12px 0 0;
+            background: black;
+            box-sizing: border-box;
+        }
+
+        .controller-bumper.left {
+            left: 5px;
+            transform: rotate(-10deg);
+        }
+
+        .controller-bumper.right {
+            right: 5px;
+            transform: rotate(10deg);
+        }
+
+        .controller-stick,
+        .controller-button,
+        .controller-dot {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+        }
+
+        .controller-stick {
+            left: 7px;
+            top: 8px;
+            width: 7px;
+            height: 7px;
+        }
+
+        .controller-button {
+            right: 10px;
+            top: 15px;
+            width: 7px;
+            height: 7px;
+        }
+
+        .controller-dot.one {
+            right: 13px;
+            top: 7px;
+            width: 4px;
+            height: 4px;
+        }
+
+        .controller-dot.two {
+            right: 7px;
+            top: 12px;
+            width: 4px;
+            height: 4px;
+        }
+
+        .controller-plus {
+            position: absolute;
+            left: 19px;
+            top: 15px;
+            width: 10px;
+            height: 10px;
+        }
+
+        .controller-plus::before,
+        .controller-plus::after {
+            content: &quot;&quot;;
+            position: absolute;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        .controller-plus::before {
+            left: 0;
+            top: 4px;
+            width: 10px;
+            height: 3px;
+        }
+
+        .controller-plus::after {
+            left: 4px;
+            top: 0;
+            width: 3px;
+            height: 10px;
+        }
+
+        .controller-slot {
+            position: absolute;
+            top: 8px;
+            width: 5px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 4px;
+        }
+
+        .controller-slot.left {
+            left: 20px;
+        }
+
+        .controller-slot.right {
+            left: 28px;
+        }
+
+        .apps-icon {
+            position: relative;
+            width: 34px;
+            height: 34px;
+        }
+
+        .apps-square {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 3px solid #ffffff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .apps-square.one {
+            left: 0;
+            top: 0;
+        }
+
+        .apps-square.two {
+            right: 0;
+            top: 0;
+        }
+
+        .apps-square.three {
+            left: 0;
+            bottom: 0;
+        }
+
+        .apps-plus {
+            position: absolute;
+            right: 1px;
+            bottom: 1px;
+            width: 14px;
+            height: 14px;
+        }
+
+        .apps-plus::before,
+        .apps-plus::after {
+            content: &quot;&quot;;
+            position: absolute;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        .apps-plus::before {
+            left: 0;
+            top: 5px;
+            width: 14px;
+            height: 4px;
+        }
+
+        .apps-plus::after {
+            left: 5px;
+            top: 0;
+            width: 4px;
+            height: 14px;
+        }
+
+        @media (max-width: 720px) {
+            .activities-shell {
+                padding: 96px 18px 18px;
+            }
+
+            .activities-header,
+            .activity-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .activity-input {
+                width: auto;
+            }
+
+            .activities-title {
+                font-size: 34px;
+            }
+        }
+    
+        button {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }    
+        .appleseed,
+        .nav-action,
+        .homebutton {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .nav-action,
+        .homebutton {
+            border-radius: 12px;
+        }
+
+        .controller-svg,
+        .home-icon,
+        .apps-icon {
+            background: transparent !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .appleseed .nav-action,
+        .appleseed .homebutton,
+        .appleseed .controller-svg,
+        .appleseed .home-icon,
+        .appleseed .apps-icon {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            box-shadow: none !important;
+        }
+        .settings-svg {
+            width: 42px;
+            height: 42px;
+            display: block;
+        }
+        .appleseed {
+            background: rgba(0, 0, 0, 0.35) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .Medeviscool,
+        .VenomOnTop,
+        .deveriono {
+            background: rgba(0, 0, 0, 0.35) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .Medeviscool:hover,
+        .VenomOnTop:hover,
+        .deveriono:hover {
+            background: rgba(255, 255, 255, 0.12) !important;
+        }
+
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav class=&quot;appleseed&quot;&gt;
+        &lt;a class=&quot;nav-action&quot;  title=&quot;Games&quot; aria-label=&quot;Games&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fenrichment.svg&quot; target=&quot;_parent&quot;&gt;
+            &lt;svg class=&quot;controller-svg&quot; aria-hidden=&quot;true&quot; viewBox=&quot;0 0 96 64&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;path d=&quot;M24 20C17 22 13 33 9 49C8 55 18 58 22 51L30 37H66L74 51C78 58 88 55 87 49C83 33 79 22 72 20C62 17 34 17 24 20Z&quot; stroke=&quot;white&quot; stroke-width=&quot;6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;
+                &lt;circle cx=&quot;31&quot; cy=&quot;30&quot; r=&quot;5&quot; fill=&quot;white&quot;/&gt;
+                &lt;circle cx=&quot;64&quot; cy=&quot;30&quot; r=&quot;4&quot; fill=&quot;white&quot;/&gt;
+                &lt;circle cx=&quot;73&quot; cy=&quot;35&quot; r=&quot;4&quot; fill=&quot;white&quot;/&gt;
+                &lt;path d=&quot;M40 42H52M46 36V48&quot; stroke=&quot;white&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot;/&gt;
+                &lt;path d=&quot;M44 27H49M57 27H62&quot; stroke=&quot;white&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot;/&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;homebutton&quot;  title=&quot;Home&quot; aria-label=&quot;Home&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fstudyhub.svg&quot; target=&quot;_parent&quot;&gt;
+            &lt;span class=&quot;home-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;home-chimney&quot;&gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;nav-action&quot;  title=&quot;Apps&quot; aria-label=&quot;Apps&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fresources.svg&quot; target=&quot;_parent&quot;&gt;
+            &lt;span class=&quot;apps-icon&quot; aria-hidden=&quot;true&quot;&gt;
+                &lt;span class=&quot;apps-square one&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;apps-square two&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;apps-square three&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;apps-plus&quot;&gt;&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;nav-action settings-action&quot;  type=&quot;button&quot; title=&quot;Settings&quot; aria-label=&quot;Settings&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fsettings.svg&quot; target=&quot;_parent&quot;&gt;
+            &lt;svg class=&quot;settings-svg&quot; aria-hidden=&quot;true&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;path d=&quot;M29 4H35L37 11.5C39.2 12.1 41.2 13 43 14.1L49.7 10.2L53.8 14.3L49.9 21C51 22.8 51.9 24.8 52.5 27L60 29V35L52.5 37C51.9 39.2 51 41.2 49.9 43L53.8 49.7L49.7 53.8L43 49.9C41.2 51 39.2 51.9 37 52.5L35 60H29L27 52.5C24.8 51.9 22.8 51 21 49.9L14.3 53.8L10.2 49.7L14.1 43C13 41.2 12.1 39.2 11.5 37L4 35V29L11.5 27C12.1 24.8 13 22.8 14.1 21L10.2 14.3L14.3 10.2L21 14.1C22.8 13 24.8 12.1 27 11.5L29 4Z&quot; fill=&quot;white&quot;/&gt;
+                &lt;circle cx=&quot;32&quot; cy=&quot;32&quot; r=&quot;9&quot; fill=&quot;#121212&quot; opacity=&quot;0.8&quot;/&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;div class=&quot;bubble-container&quot;&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 5%;  --drift-x: 40px;  --size: 14px; --speed: 9s;  --delay: 0s;   --max-opacity: 0.6; --color: #00b4d8;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 12%; --drift-x: -30px; --size: 26px; --speed: 13s; --delay: 4s;   --max-opacity: 0.5; --color: #7209b7;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 22%; --drift-x: 50px;  --size: 16px; --speed: 8s;  --delay: 1.5s; --max-opacity: 0.7; --color: #00f5d4;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 35%; --drift-x: -45px; --size: 32px; --speed: 16s; --delay: 7s;   --max-opacity: 0.4; --color: #2ec4b6;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 48%; --drift-x: 25px;  --size: 18px; --speed: 10s; --delay: 2s;   --max-opacity: 0.6; --color: #7209b7;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 55%; --drift-x: -35px; --size: 12px; --speed: 7s;  --delay: 5.5s; --max-opacity: 0.5; --color: #00b4d8;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 68%; --drift-x: 60px;  --size: 28px; --speed: 14s; --delay: 0.8s; --max-opacity: 0.6; --color: #00f5d4;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 76%; --drift-x: -20px; --size: 15px; --speed: 9s;  --delay: 3.2s; --max-opacity: 0.7; --color: #2ec4b6;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 85%; --drift-x: 45px;  --size: 22px; --speed: 11s; --delay: 6s;   --max-opacity: 0.5; --color: #7209b7;&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;bubble&quot; style=&quot;--start-x: 93%; --drift-x: -40px; --size: 13px; --speed: 8s;  --delay: 1.8s; --max-opacity: 0.6; --color: #00b4d8;&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;main class=&quot;activities-shell&quot;&gt;
+        &lt;header class=&quot;activities-header&quot;&gt;
+            &lt;h1 class=&quot;activities-title&quot;&gt;ACTIVITIES&lt;/h1&gt;
+            &lt;div class=&quot;activity-actions&quot;&gt;
+                &lt;input class=&quot;activity-input&quot; id=&quot;game-search&quot; type=&quot;text&quot; placeholder=&quot;Search games...&quot; autocomplete=&quot;off&quot;&gt;
+                &lt;select class=&quot;activity-select&quot; id=&quot;category-filter&quot;&gt;
+                    &lt;option value=&quot;&quot;&gt;All&lt;/option&gt;
+                &lt;/select&gt;
+                &lt;button class=&quot;activity-button&quot; id=&quot;random-games&quot; type=&quot;button&quot;&gt;Random&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+
+        &lt;div class=&quot;status&quot; id=&quot;status&quot;&gt;Loading games...&lt;/div&gt;
+        &lt;section class=&quot;games-grid&quot; id=&quot;games&quot;&gt;&lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;script&gt;
+        const grid = document.getElementById(&quot;games&quot;);
+        const statusEl = document.getElementById(&quot;status&quot;);
+        const searchInput = document.getElementById(&quot;game-search&quot;);
+        const categoryFilter = document.getElementById(&quot;category-filter&quot;);
+        const randomButton = document.getElementById(&quot;random-games&quot;);
+
+        let allGames = [];
+        let imageUrls = {};
+        let usingFallbackGames = false;
+        let imageObserver = null;
+        let luminReady = false;
+        let luminTotalPages = 1;
+        let luminTotalGames = 0;
+        const luminPageLimit = 200;
+        const luminDirectoryCacheKey = &quot;aether:lumin-directory:v2&quot;;
+        const gnMathZonesUrls = [
+            &quot;https://cdn.jsdelivr.net/gh/gn-math/assets@main/zones.json&quot;,
+            &quot;https://raw.githubusercontent.com/gn-math/assets/main/zones.json&quot;
+        ];
+        const gnMathCoverUrl = &quot;https://cdn.jsdelivr.net/gh/gn-math/covers@main&quot;;
+        const gnMathHtmlUrl = &quot;https://cdn.jsdelivr.net/gh/gn-math/html@main&quot;;
+
+        const fallbackGames = [
+            { id: &quot;play-2048&quot;, name: &quot;2048&quot;, category: &quot;Puzzle&quot;, url: &quot;https://play2048.co/&quot; },
+            { id: &quot;tetris&quot;, name: &quot;Tetris&quot;, category: &quot;Puzzle&quot;, url: &quot;https://tetris.com/play-tetris&quot; },
+            { id: &quot;little-alchemy-2&quot;, name: &quot;Little Alchemy 2&quot;, category: &quot;Puzzle&quot;, url: &quot;https://littlealchemy2.com/&quot; },
+            { id: &quot;sudoku&quot;, name: &quot;Sudoku&quot;, category: &quot;Puzzle&quot;, url: &quot;https://sudoku.com/&quot; },
+            { id: &quot;wordle&quot;, name: &quot;Wordle&quot;, category: &quot;Puzzle&quot;, url: &quot;https://www.nytimes.com/games/wordle/index.html&quot; },
+            { id: &quot;connections&quot;, name: &quot;Connections&quot;, category: &quot;Puzzle&quot;, url: &quot;https://www.nytimes.com/games/connections&quot; },
+            { id: &quot;minesweeper&quot;, name: &quot;Minesweeper&quot;, category: &quot;Puzzle&quot;, url: &quot;https://minesweeper.online/&quot; },
+            { id: &quot;cut-the-rope&quot;, name: &quot;Cut The Rope&quot;, category: &quot;Puzzle&quot;, url: &quot;https://www.crazygames.com/game/cut-the-rope&quot; },
+            { id: &quot;hextris&quot;, name: &quot;Hextris&quot;, category: &quot;Arcade&quot;, url: &quot;https://hextris.io/&quot; },
+            { id: &quot;agar&quot;, name: &quot;Agar.io&quot;, category: &quot;Arcade&quot;, url: &quot;https://agar.io/&quot; },
+            { id: &quot;paper-io&quot;, name: &quot;Paper.io&quot;, category: &quot;Arcade&quot;, url: &quot;https://paper-io.com/&quot; },
+            { id: &quot;slither&quot;, name: &quot;Slither.io&quot;, category: &quot;Arcade&quot;, url: &quot;https://slither.io/&quot; },
+            { id: &quot;shell-shockers&quot;, name: &quot;Shell Shockers&quot;, category: &quot;Arcade&quot;, url: &quot;https://shellshock.io/&quot; },
+            { id: &quot;crossy-road&quot;, name: &quot;Crossy Road&quot;, category: &quot;Arcade&quot;, url: &quot;https://poki.com/en/g/crossy-road&quot; },
+            { id: &quot;temple-run&quot;, name: &quot;Temple Run 2&quot;, category: &quot;Arcade&quot;, url: &quot;https://poki.com/en/g/temple-run-2&quot; },
+            { id: &quot;subway-surfers&quot;, name: &quot;Subway Surfers&quot;, category: &quot;Arcade&quot;, url: &quot;https://poki.com/en/g/subway-surfers&quot; },
+            { id: &quot;krunker&quot;, name: &quot;Krunker&quot;, category: &quot;Action&quot;, url: &quot;https://krunker.io/&quot; },
+            { id: &quot;1v1-lol&quot;, name: &quot;1v1.LOL&quot;, category: &quot;Action&quot;, url: &quot;https://1v1.lol/&quot; },
+            { id: &quot;zombs-royale&quot;, name: &quot;Zombs Royale&quot;, category: &quot;Action&quot;, url: &quot;https://zombsroyale.io/&quot; },
+            { id: &quot;ev-io&quot;, name: &quot;Ev.io&quot;, category: &quot;Action&quot;, url: &quot;https://ev.io/&quot; },
+            { id: &quot;venge&quot;, name: &quot;Venge.io&quot;, category: &quot;Action&quot;, url: &quot;https://venge.io/&quot; },
+            { id: &quot;lolbeans&quot;, name: &quot;Lolbeans&quot;, category: &quot;Action&quot;, url: &quot;https://lolbeans.io/&quot; },
+            { id: &quot;slow-roads&quot;, name: &quot;Slow Roads&quot;, category: &quot;Driving&quot;, url: &quot;https://slowroads.io/&quot; },
+            { id: &quot;drift-boss&quot;, name: &quot;Drift Boss&quot;, category: &quot;Driving&quot;, url: &quot;https://www.hoodamath.com/games/driftboss.html&quot; },
+            { id: &quot;moto-x3m&quot;, name: &quot;Moto X3M&quot;, category: &quot;Driving&quot;, url: &quot;https://poki.com/en/g/moto-x3m&quot; },
+            { id: &quot;madalin-stunt&quot;, name: &quot;Madalin Stunt Cars&quot;, category: &quot;Driving&quot;, url: &quot;https://www.crazygames.com/game/madalin-stunt-cars-2&quot; },
+            { id: &quot;basket-random&quot;, name: &quot;Basket Random&quot;, category: &quot;Sports&quot;, url: &quot;https://www.twoplayergames.org/game/basket-random&quot; },
+            { id: &quot;soccer-random&quot;, name: &quot;Soccer Random&quot;, category: &quot;Sports&quot;, url: &quot;https://www.twoplayergames.org/game/soccer-random&quot; },
+            { id: &quot;retro-bowl&quot;, name: &quot;Retro Bowl&quot;, category: &quot;Sports&quot;, url: &quot;https://retrobowl.me/&quot; },
+            { id: &quot;basketball-stars&quot;, name: &quot;Basketball Stars&quot;, category: &quot;Sports&quot;, url: &quot;https://poki.com/en/g/basketball-stars&quot; },
+            { id: &quot;lichess&quot;, name: &quot;Lichess&quot;, category: &quot;Strategy&quot;, url: &quot;https://lichess.org/&quot; },
+            { id: &quot;chess&quot;, name: &quot;Chess&quot;, category: &quot;Strategy&quot;, url: &quot;https://www.chess.com/play/computer&quot; },
+            { id: &quot;checkers&quot;, name: &quot;Checkers&quot;, category: &quot;Strategy&quot;, url: &quot;https://cardgames.io/checkers/&quot; },
+            { id: &quot;bloons&quot;, name: &quot;Bloons TD&quot;, category: &quot;Strategy&quot;, url: &quot;https://www.crazygames.com/game/bloons-tower-defense&quot; },
+            { id: &quot;sandspiel&quot;, name: &quot;Sandspiel&quot;, category: &quot;Creative&quot;, url: &quot;https://sandspiel.club/&quot; },
+            { id: &quot;classic-minecraft&quot;, name: &quot;Classic Minecraft&quot;, category: &quot;Creative&quot;, url: &quot;https://classic.minecraft.net/&quot; },
+            { id: &quot;townscaper&quot;, name: &quot;Townscaper&quot;, category: &quot;Creative&quot;, url: &quot;https://oskarstalberg.com/Townscaper/&quot; },
+            { id: &quot;neal-fun&quot;, name: &quot;Neal.fun&quot;, category: &quot;Creative&quot;, url: &quot;https://neal.fun/&quot; },
+            { id: &quot;quick-draw&quot;, name: &quot;Quick Draw&quot;, category: &quot;Creative&quot;, url: &quot;https://quickdraw.withgoogle.com/&quot; },
+            { id: &quot;geoguessr&quot;, name: &quot;GeoGuessr&quot;, category: &quot;Trivia&quot;, url: &quot;https://www.geoguessr.com/&quot; },
+            { id: &quot;seterra&quot;, name: &quot;Seterra&quot;, category: &quot;Trivia&quot;, url: &quot;https://www.geoguessr.com/seterra/&quot; },
+            { id: &quot;freerice&quot;, name: &quot;FreeRice&quot;, category: &quot;Trivia&quot;, url: &quot;https://freerice.com/&quot; },
+        ];
+
+        const staticCdnBase = &quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/&quot;;
+
+        function getStaticPageUrl(page) {
+            let parentHref = &quot;&quot;;
+            try {
+                parentHref = window.parent &amp;&amp; window.parent !== window ? window.parent.location.href : &quot;&quot;;
+            } catch {}
+
+            const currentHref = [window.location.href, document.referrer, parentHref].join(&quot; &quot;);
+            const isStatic = currentHref.includes(&quot;/gh/AetherGamesOfficial/&quot;) || currentHref.includes(&quot;.svg&quot;);
+            return isStatic ? staticCdnBase + page.replace(/\.html$/, &quot;.svg&quot;) : page;
+        }
+
+        function getLoadingHandoffUrl(destination) {
+            return `${getStaticPageUrl(&quot;loading.html&quot;)}?next=${encodeURIComponent(destination)}`;
+        }
+
+        function unwrapLaunchTarget(value) {
+            const text = String(value || &quot;&quot;).trim();
+            try {
+                const parsed = new URL(text, window.location.href);
+                const wrapped = parsed.searchParams.get(&quot;goto&quot;);
+                return wrapped ? decodeURIComponent(wrapped) : text;
+            } catch {
+                const match = text.match(/[?&amp;]goto=([^&amp;#]+)/);
+                return match ? decodeURIComponent(match[1]) : text;
+            }
+        }
+
+        function setStatus(message) {
+            statusEl.textContent = message;
+        }
+
+        function showGameLoader() {
+            let loader = document.getElementById(&quot;game-loader&quot;);
+            if (loader) {
+                loader.style.opacity = &quot;1&quot;;
+                return loader;
+            }
+
+            loader = document.createElement(&quot;iframe&quot;);
+            loader.id = &quot;game-loader&quot;;
+            loader.title = &quot;Loading&quot;;
+            loader.src = getStaticPageUrl(&quot;loading.html&quot;);
+            loader.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;);
+            loader.style.cssText = [
+                &quot;position:fixed&quot;,
+                &quot;inset:0&quot;,
+                &quot;width:100vw&quot;,
+                &quot;height:100vh&quot;,
+                &quot;border:0&quot;,
+                &quot;z-index:2147483647&quot;,
+                &quot;background:#000&quot;,
+                &quot;opacity:1&quot;,
+                &quot;transition:opacity 520ms ease&quot;,
+                &quot;pointer-events:auto&quot;,
+            ].join(&quot;;&quot;);
+            document.body.prepend(loader);
+            return loader;
+        }
+
+        function hideGameLoader() {
+            const loader = document.getElementById(&quot;game-loader&quot;);
+            if (!loader) return;
+            loader.style.opacity = &quot;0&quot;;
+            window.setTimeout(() =&gt; loader.remove(), 560);
+        }
+
+        function normalizeGames(result) {
+            if (Array.isArray(result)) return result;
+            return result?.games || [];
+        }
+
+        function normalizeGnMathZone(zone) {
+            const url = String(zone.url || &quot;&quot;)
+                .replaceAll(&quot;{COVER_URL}&quot;, gnMathCoverUrl)
+                .replaceAll(&quot;{HTML_URL}&quot;, gnMathHtmlUrl);
+            const cover = String(zone.cover || &quot;&quot;)
+                .replaceAll(&quot;{COVER_URL}&quot;, gnMathCoverUrl)
+                .replaceAll(&quot;{HTML_URL}&quot;, gnMathHtmlUrl);
+            const special = Array.isArray(zone.special) &amp;&amp; zone.special.length
+                ? `GN Math ${zone.special[0]}`
+                : &quot;GN Math&quot;;
+
+            return {
+                id: `gn-${zone.id}`,
+                name: zone.name || `GN Math ${zone.id}`,
+                category: special,
+                cover_url: cover,
+                html_url: url,
+                source: &quot;gn-math&quot;,
+                author: zone.author || &quot;&quot;
+            };
+        }
+
+        async function fetchJsonFromAny(urls) {
+            let lastError = null;
+            for (const url of urls) {
+                try {
+                    const response = await fetch(`${url}${url.includes(&quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;}t=${Date.now()}`);
+                    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+                    return await response.json();
+                } catch (err) {
+                    lastError = err;
+                }
+            }
+            throw lastError || new Error(&quot;Could not fetch catalog.&quot;);
+        }
+
+        async function loadGnMathGames() {
+            const zones = await fetchJsonFromAny(gnMathZonesUrls);
+            return zones
+                .filter((zone) =&gt; zone?.id !== undefined &amp;&amp; zone?.name &amp;&amp; zone?.url)
+                .map(normalizeGnMathZone);
+        }
+
+        function withTimeout(promise, timeout, message) {
+            let timeoutId;
+            const timeoutPromise = new Promise((_, reject) =&gt; {
+                timeoutId = setTimeout(() =&gt; reject(new Error(message)), timeout);
+            });
+
+            return Promise.race([promise, timeoutPromise]).finally(() =&gt; clearTimeout(timeoutId));
+        }
+
+        function getCachedLuminDirectory() {
+            try {
+                const cached = sessionStorage.getItem(luminDirectoryCacheKey);
+                if (!cached) return null;
+                const parsed = JSON.parse(cached);
+                if (!parsed || !Array.isArray(parsed.games) || !parsed.games.length) return null;
+                return parsed;
+            } catch {
+                return null;
+            }
+        }
+
+        function setCachedLuminDirectory(games, total) {
+            try {
+                sessionStorage.setItem(luminDirectoryCacheKey, JSON.stringify({ games, total }));
+            } catch {}
+        }
+
+        async function retryLumin(operation, attempts = 4) {
+            let lastError = null;
+            for (let attempt = 1; attempt &lt;= attempts; attempt++) {
+                try {
+                    return await operation();
+                } catch (err) {
+                    lastError = err;
+                    if (attempt === attempts) break;
+                    await new Promise((resolve) =&gt;
+                        setTimeout(resolve, 250 * Math.pow(2, attempt - 1) + Math.floor(Math.random() * 200))
+                    );
+                }
+            }
+            throw lastError;
+        }
+
+        async function loadLuminSdk() {
+            if (window.Lumin) return;
+
+            await new Promise((resolve, reject) =&gt; {
+                const script = document.createElement(&quot;script&quot;);
+                script.src = &quot;https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js&quot;;
+                script.async = true;
+                script.onload = resolve;
+                script.onerror = () =&gt; reject(new Error(&quot;Lumin SDK failed to load.&quot;));
+                document.head.appendChild(script);
+            });
+        }
+
+        async function getGamesPage(page) {
+            const result = await retryLumin(() =&gt; Lumin.getGames({ page, limit: luminPageLimit, q: &quot;&quot; }));
+            const games = normalizeGames(result);
+            const total = Number(result?.total || games.length);
+            const pages = Number(result?.pages || Math.ceil(total / luminPageLimit) || 1);
+            return { games, pages, total };
+        }
+
+        function updateCategories(categories) {
+            categoryFilter.innerHTML = '&lt;option value=&quot;&quot;&gt;All&lt;/option&gt;';
+            for (const category of categories) {
+                const option = document.createElement(&quot;option&quot;);
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            }
+        }
+
+        function categoriesFromGames(games) {
+            return [...new Set(games.map((game) =&gt; game.category).filter(Boolean))].sort();
+        }
+
+        function mergeLuminGames(games) {
+            const seen = new Set(allGames.map((game) =&gt; game.id));
+            const freshGames = games.filter((game) =&gt; game?.id &amp;&amp; !seen.has(game.id));
+            if (!freshGames.length) return false;
+
+            allGames = allGames.concat(freshGames);
+            return true;
+        }
+
+        function mergeCatalogGames(games) {
+            const seen = new Set(allGames.map((game) =&gt; game.id));
+            const freshGames = games.filter((game) =&gt; game?.id &amp;&amp; !seen.has(game.id));
+            if (!freshGames.length) return false;
+
+            allGames = allGames.concat(freshGames);
+            return true;
+        }
+
+        async function loadRemainingLuminPages(startPage) {
+            for (let page = startPage; page &lt;= luminTotalPages; page += 3) {
+                const batch = await Promise.all(
+                    Array.from({ length: Math.min(3, luminTotalPages - page + 1) }, (_, index) =&gt;
+                        getGamesPage(page + index).catch(() =&gt; ({ games: [] }))
+                    )
+                );
+
+                const nextGames = batch.flatMap((result) =&gt; result.games);
+                if (!nextGames.length || !mergeLuminGames(nextGames)) continue;
+
+                const fetchedCount = luminTotalGames ? Math.min(allGames.length, luminTotalGames) : allGames.length;
+                updateCategories(categoriesFromGames(allGames));
+                setCachedLuminDirectory(allGames, luminTotalGames);
+                setStatus(luminTotalGames ? `Loading Lumin games: ${fetchedCount} of ${luminTotalGames}` : `Loading Lumin games: ${allGames.length}`);
+                refreshGames();
+                await new Promise((resolve) =&gt; setTimeout(resolve, 40));
+            }
+
+            setStatus(`${allGames.length} games`);
+        }
+
+        function normalizeCategories(result) {
+            if (Array.isArray(result)) return result;
+            return result?.categories || result?.data || [];
+        }
+
+        function getFallbackImage(game) {
+            const label = game.name
+                .slice(0, 18)
+                .replaceAll(&quot;&amp;&quot;, &quot;&amp;amp;&quot;)
+                .replaceAll(&quot;&lt;&quot;, &quot;&amp;lt;&quot;)
+                .replaceAll(&quot;&gt;&quot;, &quot;&amp;gt;&quot;);
+            const categoryName = game.category || &quot;Games&quot;;
+            const category = categoryName
+                .toUpperCase()
+                .replaceAll(&quot;&amp;&quot;, &quot;&amp;amp;&quot;)
+                .replaceAll(&quot;&lt;&quot;, &quot;&amp;lt;&quot;)
+                .replaceAll(&quot;&gt;&quot;, &quot;&amp;gt;&quot;);
+            const palette = {
+                Puzzle: [&quot;#00f5d4&quot;, &quot;#7209b7&quot;, &quot;#00b4d8&quot;],
+                Arcade: [&quot;#ff006e&quot;, &quot;#00b4d8&quot;, &quot;#7209b7&quot;],
+                Action: [&quot;#f72585&quot;, &quot;#ffbe0b&quot;, &quot;#3a0ca3&quot;],
+                Driving: [&quot;#2ec4b6&quot;, &quot;#00b4d8&quot;, &quot;#111111&quot;],
+                Sports: [&quot;#80ed99&quot;, &quot;#00b4d8&quot;, &quot;#7209b7&quot;],
+                Strategy: [&quot;#4cc9f0&quot;, &quot;#4361ee&quot;, &quot;#111111&quot;],
+                Creative: [&quot;#00f5d4&quot;, &quot;#2ec4b6&quot;, &quot;#7209b7&quot;],
+                Trivia: [&quot;#fdd85d&quot;, &quot;#00b4d8&quot;, &quot;#7209b7&quot;],
+            };
+            const colors = palette[categoryName] || [&quot;#00b4d8&quot;, &quot;#7209b7&quot;, &quot;#00f5d4&quot;];
+            const initials = game.name
+                .split(/[\s.-]+/)
+                .filter(Boolean)
+                .slice(0, 2)
+                .map((word) =&gt; word[0].toUpperCase())
+                .join(&quot;&quot;);
+            const svg = `
+                &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 300 300&quot;&gt;
+                    &lt;defs&gt;
+                        &lt;linearGradient id=&quot;bg&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;&gt;
+                            &lt;stop offset=&quot;0&quot; stop-color=&quot;#050505&quot;/&gt;
+                            &lt;stop offset=&quot;1&quot; stop-color=&quot;#151515&quot;/&gt;
+                        &lt;/linearGradient&gt;
+                        &lt;filter id=&quot;glow&quot;&gt;
+                            &lt;feGaussianBlur stdDeviation=&quot;6&quot; result=&quot;blur&quot;/&gt;
+                            &lt;feMerge&gt;
+                                &lt;feMergeNode in=&quot;blur&quot;/&gt;
+                                &lt;feMergeNode in=&quot;SourceGraphic&quot;/&gt;
+                            &lt;/feMerge&gt;
+                        &lt;/filter&gt;
+                    &lt;/defs&gt;
+                    &lt;rect width=&quot;300&quot; height=&quot;300&quot; fill=&quot;url(#bg)&quot;/&gt;
+                    &lt;rect x=&quot;18&quot; y=&quot;18&quot; width=&quot;264&quot; height=&quot;264&quot; rx=&quot;24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;8&quot;/&gt;
+                    &lt;circle cx=&quot;76&quot; cy=&quot;78&quot; r=&quot;34&quot; fill=&quot;${colors[0]}&quot; opacity=&quot;.85&quot; filter=&quot;url(#glow)&quot;/&gt;
+                    &lt;circle cx=&quot;230&quot; cy=&quot;224&quot; r=&quot;42&quot; fill=&quot;${colors[1]}&quot; opacity=&quot;.82&quot; filter=&quot;url(#glow)&quot;/&gt;
+                    &lt;circle cx=&quot;222&quot; cy=&quot;78&quot; r=&quot;20&quot; fill=&quot;${colors[2]}&quot; opacity=&quot;.9&quot; filter=&quot;url(#glow)&quot;/&gt;
+                    &lt;text x=&quot;150&quot; y=&quot;130&quot; text-anchor=&quot;middle&quot; fill=&quot;white&quot; font-family=&quot;Courier New, monospace&quot; font-size=&quot;62&quot; font-weight=&quot;700&quot; filter=&quot;url(#glow)&quot;&gt;${initials}&lt;/text&gt;
+                    &lt;text x=&quot;150&quot; y=&quot;190&quot; text-anchor=&quot;middle&quot; fill=&quot;white&quot; font-family=&quot;Courier New, monospace&quot; font-size=&quot;24&quot; font-weight=&quot;700&quot;&gt;${label}&lt;/text&gt;
+                    &lt;text x=&quot;150&quot; y=&quot;226&quot; text-anchor=&quot;middle&quot; fill=&quot;${colors[0]}&quot; font-family=&quot;Courier New, monospace&quot; font-size=&quot;15&quot; font-weight=&quot;700&quot;&gt;${category}&lt;/text&gt;
+                &lt;/svg&gt;
+            `;
+
+            return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+        }
+
+        async function getLuminImageUrl(token) {
+            return retryLumin(() =&gt; Lumin.getImageUrl(token), 6);
+        }
+
+        async function loadImages(games) {
+            await Promise.all(games.map(async (game) =&gt; {
+                if (game.cover_url) {
+                    imageUrls[game.id] = game.cover_url;
+                    return;
+                }
+
+                if (game.url &amp;&amp; !game.image_token) {
+                    imageUrls[game.id] = getFallbackImage(game);
+                    return;
+                }
+
+                if (!game.image_token || imageUrls[game.id] || !window.Lumin) return;
+                try {
+                    imageUrls[game.id] = await getLuminImageUrl(game.image_token);
+                } catch {
+                    imageUrls[game.id] = &quot;&quot;;
+                }
+            }));
+        }
+
+        function watchImage(image, game) {
+            if (!imageObserver) {
+                imageObserver = new IntersectionObserver((entries) =&gt; {
+                    for (const entry of entries) {
+                        if (!entry.isIntersecting) continue;
+
+                        const target = entry.target;
+                        imageObserver.unobserve(target);
+                        const gameId = target.dataset.gameId;
+                        const nextGame = allGames.find((item) =&gt; item.id === gameId);
+                        if (!nextGame) return;
+
+                        loadImages([nextGame]).then(() =&gt; {
+                            if (imageUrls[nextGame.id]) {
+                                target.src = imageUrls[nextGame.id];
+                            }
+                        });
+                    }
+                }, { root: grid, rootMargin: &quot;260px&quot; });
+            }
+
+            image.dataset.gameId = game.id;
+            imageObserver.observe(image);
+        }
+
+        function getVisibleGames() {
+            const query = searchInput.value.trim().toLowerCase();
+            const category = categoryFilter.value;
+
+            return allGames.filter((game) =&gt; {
+                const matchesSearch = !query || game.name.toLowerCase().includes(query);
+                const matchesCategory = !category || game.category === category;
+                return matchesSearch &amp;&amp; matchesCategory;
+            });
+        }
+
+        function openInResearch(url) {
+            if (!url) return;
+            const target = unwrapLaunchTarget(url);
+            const destination = `${getStaticPageUrl(&quot;research.html&quot;)}?goto=${encodeURIComponent(target)}`;
+            const handoff = getLoadingHandoffUrl(destination);
+            try {
+                window.parent.location.href = handoff;
+            } catch {
+                window.location.href = handoff;
+            }
+        }
+
+        async function ensureLuminReady() {
+            if (!window.Lumin) await loadLuminSdk();
+            if (!luminReady) {
+                await Lumin.init({ headless: true });
+                luminReady = true;
+            }
+        }
+
+        async function playGame(game) {
+            if (!game) return;
+            showGameLoader();
+
+            const directUrl = game.html_url || game.url || game.link || game.src || game.href;
+            if (directUrl) {
+                setStatus(`Opening ${game.name}...`);
+                openInResearch(directUrl);
+                return;
+            }
+
+            try {
+                setStatus(`Opening ${game.name}...`);
+                await ensureLuminReady();
+                const result = await withTimeout(Lumin.getGameUrl(game.id), 20000, &quot;Game link took too long to load.&quot;);
+                const url = result?.url || result;
+                if (!url) throw new Error(&quot;Lumin did not return a game URL.&quot;);
+                openInResearch(url);
+            } catch (err) {
+                hideGameLoader();
+                console.error(&quot;Game launch failed:&quot;, err);
+                setStatus(&quot;Could not open game.&quot;);
+            }
+        }
+
+        function renderGames(games) {
+            grid.innerHTML = &quot;&quot;;
+            imageObserver?.disconnect();
+            imageObserver = null;
+
+            if (!games.length) {
+                setStatus(&quot;No games found.&quot;);
+                return;
+            }
+
+            const totalGames = allGames.length || luminTotalGames;
+            setStatus(totalGames &gt; games.length ? `${games.length} of ${totalGames} games` : `${games.length} games`);
+
+            for (const game of games) {
+                const card = document.createElement(&quot;button&quot;);
+                card.className = &quot;game-card&quot;;
+                card.type = &quot;button&quot;;
+                card.dataset.gameId = game.id;
+                card.addEventListener(&quot;click&quot;, (event) =&gt; {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    playGame(game);
+                });
+
+                const image = document.createElement(&quot;img&quot;);
+                image.alt = game.name;
+                image.onerror = () =&gt; {
+                    image.onerror = null;
+                    image.src = getFallbackImage(game);
+                };
+                if (imageUrls[game.id]) {
+                    image.src = imageUrls[game.id];
+                } else if (!game.image_token) {
+                    image.src = getFallbackImage(game);
+                }
+                if (game.image_token &amp;&amp; !imageUrls[game.id]) {
+                    watchImage(image, game);
+                }
+
+                const title = document.createElement(&quot;span&quot;);
+                title.textContent = game.name;
+
+                card.append(image, title);
+                grid.appendChild(card);
+            }
+        }
+
+        async function refreshGames() {
+            const games = getVisibleGames();
+            renderGames(games);
+        }
+
+        async function initActivities() {
+            showGameLoader();
+            const cachedDirectory = getCachedLuminDirectory();
+            if (cachedDirectory) {
+                allGames = cachedDirectory.games;
+                luminTotalGames = cachedDirectory.total || cachedDirectory.games.length;
+                updateCategories(categoriesFromGames(allGames));
+                refreshGames();
+            }
+
+            try {
+                setStatus(cachedDirectory ? `${allGames.length} games` : &quot;Loading Lumin games...&quot;);
+                await withTimeout(loadLuminSdk(), 15000, &quot;Lumin SDK took too long to load.&quot;);
+                await withTimeout(Lumin.init({ headless: true }), 30000, &quot;Lumin took too long to start.&quot;);
+                luminReady = true;
+                const firstPage = await withTimeout(getGamesPage(1), 30000, &quot;Lumin games took too long to load.&quot;);
+                allGames = firstPage.games;
+                if (!allGames.length) throw new Error(&quot;Lumin returned no games.&quot;);
+                usingFallbackGames = false;
+                luminTotalPages = firstPage.pages;
+                luminTotalGames = firstPage.total;
+                setCachedLuminDirectory(allGames, luminTotalGames);
+
+                let categories = normalizeCategories(await Lumin.getCategories().catch(() =&gt; []));
+                if (!categories.length) {
+                    categories = categoriesFromGames(allGames);
+                }
+
+                updateCategories(categories);
+                await loadImages(allGames.slice(0, 24));
+                refreshGames();
+                hideGameLoader();
+                loadGnMathGames().then(async (gnGames) =&gt; {
+                    if (!mergeCatalogGames(gnGames)) return;
+                    updateCategories(categoriesFromGames(allGames));
+                    await loadImages(gnGames.slice(0, 24));
+                    refreshGames();
+                    setStatus(`${allGames.length} games`);
+                }).catch((err) =&gt; {
+                    console.error(&quot;GN Math catalog failed:&quot;, err);
+                });
+                loadRemainingLuminPages(2).catch((err) =&gt; {
+                    console.error(&quot;More Lumin pages failed:&quot;, err);
+                    setStatus(`${allGames.length} games loaded. More pages failed.`);
+                });
+                return;
+            } catch (err) {
+                console.error(&quot;LuminSDK error:&quot;, err);
+                if (cachedDirectory) {
+                    try {
+                        const gnGames = await loadGnMathGames();
+                        mergeCatalogGames(gnGames);
+                        await loadImages(gnGames.slice(0, 24));
+                        updateCategories(categoriesFromGames(allGames));
+                        refreshGames();
+                    } catch (gnErr) {
+                        console.error(&quot;GN Math catalog failed:&quot;, gnErr);
+                    }
+                    setStatus(`${allGames.length} games`);
+                    hideGameLoader();
+                    return;
+                }
+                usingFallbackGames = false;
+                allGames = [];
+                luminTotalGames = 0;
+                updateCategories([]);
+                grid.innerHTML = &quot;&quot;;
+                try {
+                    setStatus(&quot;Loading GN Math games...&quot;);
+                    allGames = await loadGnMathGames();
+                    await loadImages(allGames.slice(0, 24));
+                    updateCategories(categoriesFromGames(allGames));
+                    refreshGames();
+                    hideGameLoader();
+                } catch (gnErr) {
+                    console.error(&quot;GN Math catalog failed:&quot;, gnErr);
+                    setStatus(&quot;Game catalogs failed to load.&quot;);
+                    hideGameLoader();
+                }
+            }
+        }
+
+        searchInput.addEventListener(&quot;input&quot;, refreshGames);
+        categoryFilter.addEventListener(&quot;change&quot;, refreshGames);
+        randomButton.addEventListener(&quot;click&quot;, async () =&gt; {
+            setStatus(&quot;Loading random games...&quot;);
+
+            if (!allGames.length &amp;&amp; !window.Lumin) {
+                setStatus(&quot;Game catalogs failed to load.&quot;);
+                return;
+            }
+
+            const shuffled = [...allGames].sort(() =&gt; Math.random() - 0.5).slice(0, 20);
+            await loadImages(shuffled);
+            renderGames(shuffled);
+        });
+
+        window.addEventListener(&quot;beforeunload&quot;, () =&gt; {
+            window.Lumin?.destroy?.();
+        });
+
+        initActivities();
+    &lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+    const store = window.localStorage;
+    const bgMap = {
+        default: '#121212 url(&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png&quot;) center / cover fixed no-repeat',
+        night: 'linear-gradient(135deg, #050505, #122033 58%, #12051f) fixed',
+        ocean: 'linear-gradient(135deg, #001219, #005f73, #0a9396) fixed',
+        none: '#121212'
+    };
+    const custom = (store.getItem('aether.settings.customBg') || '').trim();
+    const mode = store.getItem('aether.settings.bg') || 'default';
+    const bg = custom ? `#121212 url(&quot;${custom.replace(/&quot;/g, '%22')}&quot;) center / cover fixed no-repeat` : (bgMap[mode] || bgMap.default);
+    document.documentElement.style.background = bg;
+    document.body.style.background = bg;
+    document.querySelectorAll('.settings-action').forEach(button =&gt; {
+        button.addEventListener('click', () =&gt; { window.parent.location.href = &quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fsettings.svg&quot;; });
+    });
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+
+
+
+
+
+" allow="autoplay; fullscreen; pointer-lock; gamepad" allowfullscreen="true"></iframe>
+  </foreignObject>
+</svg>

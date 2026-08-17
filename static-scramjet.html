@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-store">
+  <base href="https://cdn.jsdelivr.net/gh/sealiee11/arctic-static@main/">
+  <title>Loading...</title>
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #0d1324; color: #eef5ff; font-family: system-ui, sans-serif; }
+    #stage { position: fixed; inset: 0; display: grid; place-items: center; text-align: center; }
+    #status { opacity: .78; margin-top: 12px; font-size: 14px; letter-spacing: .03em; }
+    #mark { width: 42px; height: 42px; border: 3px solid #8be7ff; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+    #frame { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; display: none; background: white; }
+    #error { display: none; max-width: 520px; padding: 28px; }
+    #retry { margin-top: 18px; border: 0; border-radius: 10px; background: #ff265c; color: white; padding: 12px 24px; font-weight: 700; cursor: pointer; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <div>
+      <div id="mark"></div>
+      <div id="status">connecting...</div>
+      <div id="error">
+        <h2>Couldn't load that page</h2>
+        <p id="errorText">The connection did not finish.</p>
+        <button id="retry" type="button">Try again</button>
+      </div>
+    </div>
+  </div>
+  <iframe id="frame" allow="autoplay; fullscreen; clipboard-read; clipboard-write; encrypted-media; picture-in-picture; gamepad"></iframe>
+  <script>
+    (() => {
+      const memory = new Map();
+      const safeStore = {
+        getItem: key => memory.has(String(key)) ? memory.get(String(key)) : null,
+        setItem: (key, value) => memory.set(String(key), String(value)),
+        removeItem: key => memory.delete(String(key)),
+        clear: () => memory.clear()
+      };
+      for (const name of ["localStorage", "sessionStorage"]) {
+        try { void window[name]; }
+        catch { try { Object.defineProperty(window, name, { value: safeStore, configurable: true }); } catch {} }
+      }
+    })();
+  </script>
+  <script>
+    (async () => {
+      const { r: prepare, R: Runtime, d: decodeTarget } = await import("https://cdn.jsdelivr.net/gh/sealiee11/arctic-static@main/assets/resolver-C09Pc7JC.js");
+
+    function hostLocationPart(part) {
+      try {
+        const injected = window.__AETHER_STATIC_SCRAMJET_HREF__;
+        if (typeof injected === "string" && injected) {
+          return new URL(injected, window.location.href)[part] || "";
+        }
+      } catch {}
+      try {
+        if (window.parent && window.parent !== window && window.parent.location) {
+          return window.parent.location[part] || "";
+        }
+      } catch {}
+      return window.location[part] || "";
+    }
+
+    const params = new URLSearchParams(hostLocationPart("search"));
+    const preferredWisp = normalizeWisp(window.__AETHER_STATIC_WISP || params.get("wisp") || "wss://wisp.mercurywork.shop/");
+    const backend = window.__AETHER_STATIC_BACKEND || params.get("backend") || "scramjet2";
+    const bundledWisps = [
+      "wss://wisp.mercurywork.shop/",
+      "wss://arctic.lat/wisp/"
+    ].map(normalizeWisp).filter(Boolean);
+    const frame = document.getElementById("frame");
+    const stage = document.getElementById("stage");
+    const statusEl = document.getElementById("status");
+    const errorBox = document.getElementById("error");
+    const errorText = document.getElementById("errorText");
+    const retry = document.getElementById("retry");
+    let runId = 0;
+    let runtime = null;
+    let relayPromise = null;
+    const rejectedRelays = new Set;
+
+    function post(status, detail) {
+      if (window.parent !== window) window.parent.postMessage({ type: "arctic-embed", status, detail }, "*");
+    }
+
+    function targetOf() {
+      const injected = window.__ARCTIC_EMBED_TARGET;
+      if (typeof injected === "string" && injected) return injected;
+      const hash = window.__AETHER_STATIC_TARGET_HASH || hostLocationPart("hash").slice(1);
+      if (hash) return decodeTarget(hash) || hash;
+      return params.get("url") || "";
+    }
+
+    function setStatus(text) {
+      statusEl.textContent = text;
+      post("progress", text);
+    }
+
+    function normalizeWisp(value) {
+      if (typeof value !== "string") return null;
+      const text = value.trim();
+      if (!/^wss?:\/\//i.test(text)) return null;
+      const clean = text.replace(/[?#].*$/, "");
+      return clean.endsWith("/") ? clean : clean + "/";
+    }
+
+    function decodeAw1List(text) {
+      const parts = text.trim().split(".");
+      if (parts.length !== 3 || parts[0] !== "aw1") return text;
+      const payload = parts[2].replace(/-/g, "+").replace(/_/g, "/");
+      const raw = Uint8Array.from(atob(payload + "=".repeat((4 - payload.length % 4) % 4)), char => char.charCodeAt(0));
+      const key = new TextEncoder().encode(`arctic-list-mask:${parts[1]}:1`);
+      const decoded = Uint8Array.from(raw, (byte, index) => byte ^ key[index % key.length]);
+      return new TextDecoder().decode(decoded);
+    }
+
+    function parseRelayList(text) {
+      const seen = new Set;
+      const relays = [];
+      for (const line of decodeAw1List(text).split(/\n+/)) {
+        const relay = normalizeWisp(line);
+        if (relay && !seen.has(relay)) {
+          seen.add(relay);
+          relays.push(relay);
+        }
+      }
+      return relays;
+    }
+
+    async function loadRelays() {
+      if (!relayPromise) {
+        const baseRelays = [preferredWisp, ...bundledWisps].filter(Boolean);
+        relayPromise = Promise.resolve([...new Set(baseRelays)]);
+      }
+      return relayPromise;
+    }
+
+    async function nextRelay() {
+      const relays = await loadRelays();
+      return relays.find(value => !rejectedRelays.has(value)) || relays[0] || preferredWisp || bundledWisps[0] || "wss://wisp.mercurywork.shop/";
+    }
+
+    async function getRuntime() {
+      if (runtime) return runtime;
+      await prepare().catch(() => {});
+      runtime = new Runtime(nextRelay, {
+        onWispFailure: url => {
+          if (url && rejectedRelays.size < Math.max(0, bundledWisps.length - 1)) rejectedRelays.add(normalizeWisp(url) || url);
+        },
+        onWispSuccess: url => { if (url) rejectedRelays.delete(normalizeWisp(url) || url); }
+      });
+      return runtime;
+    }
+
+    async function load() {
+      const target = targetOf();
+      const token = ++runId;
+      if (!target) {
+        showError("No address was provided.");
+        return;
+      }
+      errorBox.style.display = "none";
+      frame.style.display = "none";
+      stage.style.display = "grid";
+      setStatus("connecting...");
+      try {
+        const engine = await getRuntime();
+        await engine.navigate({
+          url: target,
+          frame,
+          backend,
+          token: String(token),
+          signal: undefined,
+          isStale: () => token !== runId,
+          onLocationChange: (url) => post("navigate", url),
+          onStatus: (info) => {
+            if (info.phase === "resolving-wisp") setStatus("checking relay...");
+            if (info.phase === "connecting") setStatus("starting Scramjet...");
+            if (info.phase === "retrying") setStatus("retrying...");
+            if (info.phase === "loading") setStatus("loading...");
+          }
+        });
+        if (token !== runId) return;
+        stage.style.display = "none";
+        frame.style.display = "block";
+        post("ready", target);
+      } catch (error) {
+        if (token === runId) showError(error && error.message ? error.message : "The connection did not finish.");
+      }
+    }
+
+    function showError(message) {
+      frame.style.display = "none";
+      stage.style.display = "grid";
+      errorText.textContent = message;
+      errorBox.style.display = "block";
+      post("error", message);
+    }
+
+    retry.addEventListener("click", () => {
+      if (runtime) runtime.destroy();
+      rejectedRelays.clear();
+      relayPromise = null;
+      runtime = null;
+      load();
+    });
+
+    load();
+    })().catch((error) => {
+      const message = error && error.message ? error.message : "The connection did not finish.";
+      const frame = document.getElementById("frame");
+      const stage = document.getElementById("stage");
+      const errorBox = document.getElementById("error");
+      const errorText = document.getElementById("errorText");
+      if (frame) frame.style.display = "none";
+      if (stage) stage.style.display = "grid";
+      if (errorText) errorText.textContent = message;
+      if (errorBox) errorBox.style.display = "block";
+      if (window.parent !== window) window.parent.postMessage({ type: "arctic-embed", status: "error", detail: message }, "*");
+    });
+  </script>
+</body>
+</html>

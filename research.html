@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AETHER</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #121212 url("aether background.png") center / cover fixed no-repeat;
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab-bar {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 10px 10px 0 10px;
+            border-bottom: none;
+            gap: 5px;
+            z-index: 50;
+        }
+
+        .tab {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            color: #ffffff;
+            border: 4px solid #ffffff;
+            border-bottom: none;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            padding: 8px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.09);
+        }
+
+        .close-tab {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .new-tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            color: #ffffff;
+            border: 4px solid #ffffff;
+            border-bottom: none;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .appleseed {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            padding: 10px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #ffffff;
+            z-index: 50;
+            min-width: 320px;
+            gap: 22px;
+        }
+
+        .homebutton {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .homebutton:hover {
+            transform: scale(1.15);
+            opacity: 0.8;
+        }
+
+        .home-icon {
+            position: relative;
+            display: block;
+            width: 38px;
+            height: 34px;
+        }
+
+        .home-icon::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 12px;
+            width: 30px;
+            height: 22px;
+            background: #ffffff;
+            clip-path: polygon(0 0, 50% 0, 100% 0, 100% 100%, 63% 100%, 63% 54%, 37% 54%, 37% 100%, 0 100%);
+        }
+
+        .home-icon::after {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 0;
+            width: 34px;
+            height: 28px;
+            background: #ffffff;
+            clip-path: polygon(50% 0, 100% 58%, 90% 68%, 50% 24%, 10% 68%, 0 58%);
+        }
+
+        .home-chimney {
+            position: absolute;
+            right: 5px;
+            top: 3px;
+            width: 8px;
+            height: 15px;
+            background: #ffffff;
+            border-radius: 2px 2px 0 0;
+        }
+
+        .nav-action {
+            width: 56px;
+            height: 52px;
+            padding: 0;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .nav-action:hover {
+            transform: scale(1.12);
+            opacity: 0.8;
+        }
+
+        .controller-svg {
+            width: 58px;
+            height: 42px;
+            display: block;
+        }
+
+        .controller-icon {
+            position: relative;
+            width: 50px;
+            height: 29px;
+            border: 3px solid #ffffff;
+            border-radius: 20px 20px 14px 14px;
+            box-sizing: border-box;
+            transform: translateX(0);
+        }
+
+        .controller-icon::before,
+        .controller-icon::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            width: 13px;
+            height: 20px;
+            border: 3px solid #ffffff;
+            border-top: 0;
+            background: black;
+            box-sizing: border-box;
+        }
+
+        .controller-icon::before {
+            left: -9px;
+            border-radius: 0 0 13px 13px;
+            transform: rotate(15deg);
+        }
+
+        .controller-icon::after {
+            right: -9px;
+            border-radius: 0 0 13px 13px;
+            transform: rotate(-15deg);
+        }
+
+        .controller-bumper {
+            position: absolute;
+            top: -8px;
+            width: 16px;
+            height: 9px;
+            border: 3px solid #ffffff;
+            border-bottom: 0;
+            border-radius: 12px 12px 0 0;
+            background: black;
+            box-sizing: border-box;
+        }
+
+        .controller-bumper.left {
+            left: 5px;
+            transform: rotate(-10deg);
+        }
+
+        .controller-bumper.right {
+            right: 5px;
+            transform: rotate(10deg);
+        }
+
+        .controller-stick,
+        .controller-button,
+        .controller-dot {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+        }
+
+        .controller-stick {
+            left: 7px;
+            top: 8px;
+            width: 7px;
+            height: 7px;
+        }
+
+        .controller-button {
+            right: 10px;
+            top: 15px;
+            width: 7px;
+            height: 7px;
+        }
+
+        .controller-dot.one {
+            right: 13px;
+            top: 7px;
+            width: 4px;
+            height: 4px;
+        }
+
+        .controller-dot.two {
+            right: 7px;
+            top: 12px;
+            width: 4px;
+            height: 4px;
+        }
+
+        .controller-plus {
+            position: absolute;
+            left: 19px;
+            top: 15px;
+            width: 10px;
+            height: 10px;
+        }
+
+        .controller-plus::before,
+        .controller-plus::after {
+            content: "";
+            position: absolute;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        .controller-plus::before {
+            left: 0;
+            top: 4px;
+            width: 10px;
+            height: 3px;
+        }
+
+        .controller-plus::after {
+            left: 4px;
+            top: 0;
+            width: 3px;
+            height: 10px;
+        }
+
+        .controller-slot {
+            position: absolute;
+            top: 8px;
+            width: 5px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 4px;
+        }
+
+        .controller-slot.left {
+            left: 20px;
+        }
+
+        .controller-slot.right {
+            left: 28px;
+        }
+
+        .apps-icon {
+            position: relative;
+            width: 34px;
+            height: 34px;
+        }
+
+        .apps-square {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 3px solid #ffffff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .apps-square.one {
+            left: 0;
+            top: 0;
+        }
+
+        .apps-square.two {
+            right: 0;
+            top: 0;
+        }
+
+        .apps-square.three {
+            left: 0;
+            bottom: 0;
+        }
+
+        .apps-plus {
+            position: absolute;
+            right: 1px;
+            bottom: 1px;
+            width: 14px;
+            height: 14px;
+        }
+
+        .apps-plus::before,
+        .apps-plus::after {
+            content: "";
+            position: absolute;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        .apps-plus::before {
+            left: 0;
+            top: 5px;
+            width: 14px;
+            height: 4px;
+        }
+
+        .apps-plus::after {
+            left: 5px;
+            top: 0;
+            width: 4px;
+            height: 14px;
+        }
+
+        .main-workspace {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 650px;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .research-logo {
+            font-size: 90px;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+            user-select: none;
+        }
+
+        #uv-form {
+            width: 100%;
+        }
+
+        #uv-address {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 4px solid white;
+            border-radius: 30px;
+            padding: 18px 25px;
+            box-sizing: border-box;
+            color: white;
+            font-size: 18px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .web-viewport {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+            display: none;
+            z-index: 40;
+        }
+
+        .web-viewport.active {
+            display: block;
+        }
+
+        #uv-error {
+            color: #ff5f56;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+
+        .bubble-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            left: var(--start-x);
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            opacity: var(--max-opacity);
+            animation: floatUp var(--speed) linear infinite;
+            animation-delay: var(--delay);
+            background: var(--color);
+            box-shadow: 0 0 15px var(--color);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: var(--max-opacity);
+            }
+
+            100% {
+                transform: translateY(-110vh)
+                    translateX(var(--drift-x));
+                opacity: 0;
+            }
+        }
+    
+        button {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }    
+        .appleseed,
+        .nav-action,
+        .homebutton {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .nav-action,
+        .homebutton {
+            border-radius: 12px;
+        }
+
+        .controller-svg,
+        .home-icon,
+        .apps-icon {
+            background: transparent !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .appleseed .nav-action,
+        .appleseed .homebutton,
+        .appleseed .controller-svg,
+        .appleseed .home-icon,
+        .appleseed .apps-icon {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            box-shadow: none !important;
+        }
+        .settings-svg {
+            width: 42px;
+            height: 42px;
+            display: block;
+        }
+        .appleseed {
+            background: rgba(0, 0, 0, 0.35) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 90;
+        }
+
+        .nav-toggle {
+            position: absolute;
+            top: 122px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 91;
+            width: 56px;
+            height: 28px;
+            border: 4px solid #ffffff;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        body.nav-hidden .appleseed {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -120%);
+        }
+
+        body.nav-hidden .nav-toggle {
+            top: 16px;
+            border-top: 4px solid #ffffff;
+            border-radius: 12px;
+        }
+
+        .Medeviscool,
+        .VenomOnTop,
+        .deveriono {
+            background: rgba(0, 0, 0, 0.35) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .Medeviscool:hover,
+        .VenomOnTop:hover,
+        .deveriono:hover {
+            background: rgba(255, 255, 255, 0.12) !important;
+        }
+
+    </style>
+</head>
+
+<body>
+    <script src="page-loader.js"></script>
+
+    <div class="tab-bar" id="tab-bar">
+        <button class="new-tab-btn" id="new-tab-btn">+</button>
+    </div>
+    <nav class="appleseed" id="home-nav">
+        <button class="nav-action" onclick="window.location.href='enrichment.html'" title="Games" aria-label="Games">
+            <svg class="controller-svg" aria-hidden="true" viewBox="0 0 96 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 20C17 22 13 33 9 49C8 55 18 58 22 51L30 37H66L74 51C78 58 88 55 87 49C83 33 79 22 72 20C62 17 34 17 24 20Z" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="31" cy="30" r="5" fill="white"/>
+                <circle cx="64" cy="30" r="4" fill="white"/>
+                <circle cx="73" cy="35" r="4" fill="white"/>
+                <path d="M40 42H52M46 36V48" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                <path d="M44 27H49M57 27H62" stroke="white" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+        </button>
+        <button class="homebutton" onclick="window.location.href='studyhub.html'" title="Home" aria-label="Home">
+            <span class="home-icon" aria-hidden="true"><span class="home-chimney"></span></span>
+        </button>
+        <button class="nav-action" onclick="window.location.href='resources.html'" title="Apps" aria-label="Apps">
+            <span class="apps-icon" aria-hidden="true">
+                <span class="apps-square one"></span>
+                <span class="apps-square two"></span>
+                <span class="apps-square three"></span>
+                <span class="apps-plus"></span>
+            </span>
+        </button>
+        <button class="nav-action settings-action" onclick="window.location.href='settings.html'" type="button" title="Settings" aria-label="Settings">
+            <svg class="settings-svg" aria-hidden="true" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M29 4H35L37 11.5C39.2 12.1 41.2 13 43 14.1L49.7 10.2L53.8 14.3L49.9 21C51 22.8 51.9 24.8 52.5 27L60 29V35L52.5 37C51.9 39.2 51 41.2 49.9 43L53.8 49.7L49.7 53.8L43 49.9C41.2 51 39.2 51.9 37 52.5L35 60H29L27 52.5C24.8 51.9 22.8 51 21 49.9L14.3 53.8L10.2 49.7L14.1 43C13 41.2 12.1 39.2 11.5 37L4 35V29L11.5 27C12.1 24.8 13 22.8 14.1 21L10.2 14.3L14.3 10.2L21 14.1C22.8 13 24.8 12.1 27 11.5L29 4Z" fill="white"/>
+                <circle cx="32" cy="32" r="9" fill="#121212" opacity="0.8"/>
+            </svg>
+        </button>
+    </nav>
+
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Hide navigation">^</button>
+
+    <div class="main-workspace">
+
+        <div class="search-container" id="landing-ui">
+
+            <h1 class="research-logo">AETHER</h1>
+
+            <form id="uv-form" onsubmit="return false">
+                <input
+                    id="uv-address"
+                    type="text"
+                    placeholder="Search the web or type a URL..."
+                    autocomplete="off"
+                    autofocus
+                />
+            </form>
+
+            <div id="uv-error"></div>
+
+        </div>
+
+        <div
+            id="viewports-container"
+            style="
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                z-index: 40;
+            "
+        ></div>
+
+    </div>
+
+    <div class="bubble-container">
+
+        <div class="bubble"
+            style="
+                --start-x: 5%;
+                --drift-x: 40px;
+                --size: 14px;
+                --speed: 9s;
+                --delay: 0s;
+                --max-opacity: 0.6;
+                --color: #00b4d8;
+            ">
+        </div>
+
+        <div class="bubble"
+            style="
+                --start-x: 22%;
+                --drift-x: 50px;
+                --size: 16px;
+                --speed: 8s;
+                --delay: 1.5s;
+                --max-opacity: 0.7;
+                --color: #00f5d4;
+            ">
+        </div>
+
+        <div class="bubble"
+            style="
+                --start-x: 48%;
+                --drift-x: 25px;
+                --size: 18px;
+                --speed: 10s;
+                --delay: 2s;
+                --max-opacity: 0.6;
+                --color: #7209b7;
+            ">
+        </div>
+
+    </div>
+
+ 
+
+<script type="module">
+function initAetherResearch() {
+
+    const toolTargetKey = "aether-tool-target";
+    const staticCdnBase = "https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/";
+    const staticProxyVersion = "msvpanyl";
+    const arcticEmbedBase = staticCdnBase + "static-scramjet.html";
+    const arcticWisps = [""];
+
+    function getStaticAssetUrl(file) {
+        return staticCdnBase + file;
+    }
+
+    function encodeArcticTarget(value) {
+        const bytes = new TextEncoder().encode(value);
+        let text = "";
+        for (const byte of bytes) text += String.fromCharCode(byte);
+        return "aw1." + btoa(text).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+    }
+
+    function getArcticUrl(target, baseIndex = 0) {
+        const routeCount = arcticWisps.length;
+        const routeIndex = baseIndex % routeCount;
+        const params = new URLSearchParams({ backend: "scramjet2", palette: "gnmath", sjv: staticProxyVersion });
+        const wisp = arcticWisps[routeIndex];
+        if (wisp) params.set("wisp", wisp);
+        return arcticEmbedBase + "?" + params.toString() + "#" + encodeArcticTarget(target);
+    }
+
+
+
+    function writeStaticScramjetFrame(frame, target, baseIndex = 0) {
+        frame.removeAttribute("srcdoc");
+        frame.src = getArcticUrl(target, baseIndex);
+    }
+
+    const form = document.getElementById("uv-form");
+    const address = document.getElementById("uv-address");
+    const landingUi = document.getElementById("landing-ui");
+    const errorEl = document.getElementById("uv-error");
+
+    const tabBar = document.getElementById("tab-bar");
+    const newTabBtn = document.getElementById("new-tab-btn");
+    const viewportsContainer = document.getElementById("viewports-container");
+    const homeNav = document.getElementById("home-nav");
+    const navToggle = document.getElementById("nav-toggle");
+    let tabs = [];
+    let activeTabId = null;
+    let loadToken = 0;
+
+    function syncNavToggle() {
+        const hidden = document.body.classList.contains("nav-hidden");
+        navToggle.textContent = hidden ? "v" : "^";
+        navToggle.setAttribute("aria-label", hidden ? "Show navigation" : "Hide navigation");
+    }
+
+    navToggle.addEventListener("click", () => {
+        document.body.classList.toggle("nav-hidden");
+        syncNavToggle();
+    });
+
+    syncNavToggle();
+
+    function formatUrl(input) {
+        let url = input.trim();
+        if (!url) return "";
+
+        if (/^https?:\/\//i.test(url)) return url;
+
+        if (url.includes(".") && !url.includes(" ")) {
+            return "https://" + url;
+        }
+
+        return "https://www.bing.com/search?q=" + encodeURIComponent(url);
+    }
+
+    function assertValidUrl(url) {
+        try {
+            const parsed = new URL(url);
+            if (!["http:", "https:"].includes(parsed.protocol)) {
+                throw new Error("Only http and https addresses can be loaded.");
+            }
+        } catch {
+            throw new Error("That address could not be turned into a valid website.");
+        }
+    }
+
+    function getActiveTab() {
+        return tabs.find(t => t.id === activeTabId);
+    }
+
+    function render() {
+        const tab = getActiveTab();
+        const hasPage = !!tab?.hasLoadedUrl;
+
+        landingUi.style.display = hasPage ? "none" : "flex";
+        homeNav.style.display = "flex";
+        address.value = hasPage ? (tab.rawInput || tab.currentUrl) : "";
+
+        for (const t of tabs) {
+            const isActive = t.id === activeTabId;
+
+            t.tabEl.classList.toggle("active", isActive);
+
+            if (isActive && t.hasLoadedUrl) {
+                t.iframeEl.style.display = "block";
+                viewportsContainer.style.pointerEvents = "auto";
+            } else {
+                t.iframeEl.style.display = "none";
+            }
+        }
+    }
+
+    function setActive(id) {
+        activeTabId = id;
+        errorEl.textContent = "";
+        render();
+
+        const tab = getActiveTab();
+        if (!tab?.hasLoadedUrl) {
+            setTimeout(() => address.focus(), 0);
+        }
+    }
+
+    function createTab() {
+        const id = Date.now().toString();
+
+        const tabEl = document.createElement("div");
+        tabEl.className = "tab";
+
+        tabEl.innerHTML = `
+            <span class="tab-title">New Tab</span>
+            <button class="close-tab">&times;</button>
+        `;
+
+        const iframeEl = document.createElement("iframe");
+        iframeEl.className = "web-viewport";
+        iframeEl.style.display = "none";
+        iframeEl.setAttribute("allow", "autoplay; fullscreen; gamepad; microphone; camera; clipboard-read; clipboard-write");
+
+        viewportsContainer.appendChild(iframeEl);
+        tabBar.insertBefore(tabEl, newTabBtn);
+
+        const tab = {
+            id,
+            tabEl,
+            iframeEl,
+            hasLoadedUrl: false,
+            currentUrl: "",
+            rawInput: ""
+        };
+
+        tabs.push(tab);
+
+        tabEl.addEventListener("click", (e) => {
+            if (e.target.classList.contains("close-tab")) {
+                e.stopPropagation();
+                closeTab(id);
+            } else {
+                setActive(id);
+            }
+        });
+
+        setActive(id);
+    }
+
+    function closeTab(id) {
+        const index = tabs.findIndex(t => t.id === id);
+        if (index === -1) return;
+
+        tabs[index].tabEl.remove();
+        tabs[index].iframeEl.remove();
+        tabs.splice(index, 1);
+
+        if (!tabs.length) {
+            createTab();
+            return;
+        }
+
+        setActive(tabs[Math.max(0, index - 1)].id);
+    }
+
+    newTabBtn.addEventListener("click", createTab);
+    createTab();
+
+    function setLoadingError(token, message) {
+        if (token !== loadToken) return;
+        errorEl.textContent = message;
+    }
+
+    function showPageLoader() {
+        return null;
+    }
+
+    function hidePageLoader() {
+        const loader = document.getElementById("page-loader");
+        if (loader) loader.remove();
+    }
+
+    async function loadAddress(rawValue) {
+        const tab = getActiveTab();
+        if (!tab) return;
+
+        const input = String(rawValue ?? address.value ?? "").trim();
+        if (!input) return;
+
+        const url = formatUrl(input);
+        const token = ++loadToken;
+        let baseIndex = 0;
+        let softTimer = null;
+        let hardTimer = null;
+
+        function clearTimers() {
+            clearTimeout(softTimer);
+            clearTimeout(hardTimer);
+        }
+
+        function loadArcticFrame() {
+            showPageLoader();
+            writeStaticScramjetFrame(tab.iframeEl, url, baseIndex);
+        }
+
+        function tryNextRoute(message) {
+            if (token !== loadToken) return false;
+            if (baseIndex >= arcticWisps.length - 1) return false;
+            baseIndex += 1;
+            errorEl.textContent = message || "Trying another route...";
+            loadArcticFrame();
+            return true;
+        }
+
+        function onArcticMessage(event) {
+            const data = event.data;
+            if (!data || data.type !== "arctic-embed") return;
+
+            if (data.status === "ready") {
+                clearTimers();
+                hidePageLoader();
+                if (token === loadToken) errorEl.textContent = "";
+                window.removeEventListener("message", onArcticMessage);
+                return;
+            }
+
+            if (data.status === "progress") {
+                if (token === loadToken && errorEl.textContent === "Loading...") {
+                    errorEl.textContent = "Loading...";
+                }
+                return;
+            }
+
+            if (data.status === "error") {
+                if (!tryNextRoute("Trying another route...")) {
+                    clearTimers();
+                    hidePageLoader();
+                    setLoadingError(token, "Could not load that page.");
+                    window.removeEventListener("message", onArcticMessage);
+                }
+            }
+        }
+
+        try {
+            assertValidUrl(url);
+
+            clearTimers();
+            errorEl.textContent = "Loading...";
+            window.addEventListener("message", onArcticMessage);
+
+            tab.iframeEl.onload = () => {};
+            tab.iframeEl.onerror = () => {
+                if (!tryNextRoute("Trying another route...")) {
+                    clearTimers();
+                    hidePageLoader();
+                    setLoadingError(token, "Site blocked or failed to load.");
+                    window.removeEventListener("message", onArcticMessage);
+                }
+            };
+
+            softTimer = setTimeout(() => {
+                setLoadingError(token, "Still loading. This site may be blocking the proxy or taking too long.");
+            }, 20000);
+
+            hardTimer = setTimeout(() => {
+                if (!tryNextRoute("Trying another route...")) {
+                    hidePageLoader();
+                    setLoadingError(token, "Could not load that page.");
+                    window.removeEventListener("message", onArcticMessage);
+                }
+            }, 60000);
+
+            loadArcticFrame();
+            tab.hasLoadedUrl = true;
+            tab.currentUrl = url;
+            tab.rawInput = input;
+
+            const domain = url
+                .replace(/^https?:\/\/(www\.)?/, "")
+                .split("/")[0];
+
+            tab.tabEl.querySelector(".tab-title").textContent = domain.substring(0, 16);
+            render();
+
+        } catch (err) {
+            clearTimers();
+            hidePageLoader();
+            window.removeEventListener("message", onArcticMessage);
+            tab.hasLoadedUrl = false;
+            render();
+            errorEl.textContent = "Error: " + err.message;
+        }
+    }
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        await loadAddress(address.value);
+    });
+
+    address.addEventListener("keydown", async (e) => {
+        if (e.key !== "Enter") return;
+        e.preventDefault();
+        await loadAddress();
+    });
+
+    function getLaunchParams() {
+        const params = new URLSearchParams();
+
+        const mergeParams = (source) => {
+            if (!source) return;
+            try {
+                const url = new URL(source, window.location.href);
+                for (const [key, value] of url.searchParams) {
+                    if (!params.has(key)) params.set(key, value);
+                }
+
+                const forwarded = decodeURIComponent(url.hash.slice(1) || "");
+                if (forwarded.startsWith("?")) {
+                    const forwardedParams = new URLSearchParams(forwarded.slice(1));
+                    for (const [key, value] of forwardedParams) {
+                        if (!params.has(key)) params.set(key, value);
+                    }
+                }
+            } catch {}
+        };
+
+        mergeParams(window.__AETHER_LAUNCH_HREF__);
+        mergeParams(window.location.href);
+        mergeParams(document.referrer);
+        return params;
+    }
+
+    const params = getLaunchParams();
+    let storedGoto = "";
+    try { storedGoto = sessionStorage.getItem(toolTargetKey) || ""; } catch { storedGoto = ""; }
+    const goto = params.get("goto") || storedGoto;
+    if (goto) {
+        try { sessionStorage.removeItem(toolTargetKey); } catch {}
+        address.value = goto;
+        try { window.history.replaceState(null, "", window.location.pathname); } catch {}
+        loadAddress(goto);
+    }
+
+}
+
+if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", initAetherResearch);
+} else {
+    initAetherResearch();
+}
+</script>
+<script>
+(() => {
+    const bgMap = {
+        default: '#121212 url("aether background.png") center / cover fixed no-repeat',
+        night: 'linear-gradient(135deg, #050505, #122033 58%, #12051f) fixed',
+        ocean: 'linear-gradient(135deg, #001219, #005f73, #0a9396) fixed',
+        none: '#121212'
+    };
+    let custom = "";
+    let mode = "default";
+    try {
+        custom = (window.localStorage.getItem('aether.settings.customBg') || '').trim();
+        mode = window.localStorage.getItem('aether.settings.bg') || 'default';
+    } catch {}
+    const bg = custom ? `#121212 url("${custom.replace(/"/g, '%22')}") center / cover fixed no-repeat` : (bgMap[mode] || bgMap.default);
+    document.documentElement.style.background = bg;
+    document.body.style.background = bg;
+    document.querySelectorAll('.settings-action').forEach(button => {
+        button.addEventListener('click', () => { window.location.href = 'settings.html'; });
+    });
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

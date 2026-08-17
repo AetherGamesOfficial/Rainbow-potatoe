@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AETHER Test</title>
+    <link rel="icon" type="image/png" href="aether-favicon.png">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #121212 url("aether background.png") center / cover fixed no-repeat;
+            font-family: "Courier New", Courier, monospace;
+            color: #ffffff;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.42);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bubbles {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(1px);
+            opacity: 0.85;
+            animation: floaty 12s ease-in-out infinite alternate;
+        }
+
+        .bubble:nth-child(1) { width: 24px; height: 24px; left: 8%; top: 18%; background: #05d9e8; box-shadow: 0 0 18px #05d9e8; }
+        .bubble:nth-child(2) { width: 42px; height: 42px; left: 78%; top: 28%; background: #00ffd5; box-shadow: 0 0 24px #00ffd5; animation-delay: -2s; }
+        .bubble:nth-child(3) { width: 30px; height: 30px; left: 18%; top: 72%; background: #7d13c9; box-shadow: 0 0 20px #7d13c9; animation-delay: -5s; }
+        .bubble:nth-child(4) { width: 18px; height: 18px; left: 61%; top: 66%; background: #08c6ff; box-shadow: 0 0 16px #08c6ff; animation-delay: -7s; }
+        .bubble:nth-child(5) { width: 34px; height: 34px; left: 88%; top: 74%; background: #6f00ff; box-shadow: 0 0 24px #6f00ff; animation-delay: -9s; }
+
+        @keyframes floaty {
+            from { transform: translate3d(0, 0, 0) scale(1); }
+            to { transform: translate3d(34px, -46px, 0) scale(1.18); }
+        }
+
+        .appleseed {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 10px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #ffffff;
+            z-index: 10;
+            gap: 26px;
+        }
+
+        .nav-button {
+            background: transparent;
+            border: 0;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0;
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+        }
+
+        .nav-button svg {
+            width: 38px;
+            height: 38px;
+            fill: #ffffff;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 2;
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            padding: 190px 28px 28px;
+            box-sizing: border-box;
+            gap: 14px;
+        }
+
+        .panel {
+            position: fixed;
+            top: 112px;
+            left: 50%;
+            z-index: 9;
+            width: min(980px, calc(100vw - 48px));
+            min-height: 64px;
+            transform: translateX(-50%);
+            display: grid;
+            grid-template-columns: minmax(180px, 1fr) 148px 104px;
+            gap: 10px;
+            align-items: center;
+            padding: 8px;
+            border: 4px solid #ffffff;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-sizing: border-box;
+        }
+
+        input,
+        select,
+        button.test-button {
+            min-height: 44px;
+            border: 0;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.34);
+            color: #ffffff;
+            font: inherit;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input,
+        select {
+            padding: 0 16px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        button.test-button {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .frame-shell {
+            min-height: 0;
+            border: 4px solid #ffffff;
+            border-radius: 22px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            background: #101014;
+        }
+
+        .status {
+            margin-top: -8px;
+            min-height: 22px;
+            font-size: 14px;
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.65);
+        }
+
+        @media (max-width: 760px) {
+            .panel {
+                top: 112px;
+                grid-template-columns: 1fr;
+            }
+
+            .wrap {
+                padding-top: 330px;
+            }
+
+            .appleseed {
+                width: calc(100% - 52px);
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles" aria-hidden="true">
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+    </div>
+
+    <nav class="appleseed" aria-label="Navigation">
+        <button class="nav-button" onclick="window.location.href='enrichment.html'" aria-label="Games">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M19 26h26c8 0 13 7 15 18 1 6-2 11-7 11-4 0-7-3-9-7H20c-2 4-5 7-9 7-5 0-8-5-7-11 2-11 7-18 15-18Zm4-9h18c3 0 6 2 6 5v2H17v-2c0-3 3-5 6-5Zm-5 20v5h-5v5h-4v-5H4v-5h5v-5h4v5h5Zm30-3a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm8 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM40 36a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+        </button>
+        <button class="nav-button" onclick="window.location.href='studyhub.html'" aria-label="Home">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 31 32 10l24 21v25H39V39H25v17H8V31Zm36-18h10v15L44 19v-6Z"/></svg>
+        </button>
+        <button class="nav-button" onclick="window.location.href='resources.html'" aria-label="Tools">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 10a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm32 0a8 8 0 1 1 0 16 8 8 0 0 1 0-16ZM16 38a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm32 0a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm-12 6h8v-8h8v8h8v8h-8v8h-8v-8h-8v-8Z"/></svg>
+        </button>
+    </nav>
+
+    <main class="wrap">
+        <form class="panel" id="testForm">
+            <input id="targetInput" value="https://example.com" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+            <select id="cdnInput" aria-label="CDN origin">
+                <option value="https://cdn.jsdelivr.net/gh/sealiee11/arctic-static@main">jsDelivr</option>
+                <option value="https://testingcf.jsdelivr.net/gh/sealiee11/arctic-static@main">testingcf</option>
+                <option value="https://gcore.jsdelivr.net/gh/sealiee11/arctic-static@main">gcore</option>
+            </select>
+            <button class="test-button" type="submit">test</button>
+        </form>
+        <div class="status" id="status">ready</div>
+        <section class="frame-shell">
+            <iframe id="testFrame" allow="autoplay; fullscreen; clipboard-read; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+        </section>
+    </main>
+
+    <script>
+        const frame = document.getElementById("testFrame");
+        const form = document.getElementById("testForm");
+        const targetInput = document.getElementById("targetInput");
+        const cdnInput = document.getElementById("cdnInput");
+        const status = document.getElementById("status");
+
+        function encodeTarget(value) {
+            const bytes = new TextEncoder().encode(value);
+            let text = "";
+            for (const byte of bytes) text += String.fromCharCode(byte);
+            return "aw1." + btoa(text).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+        }
+
+        function normalizeTarget(value) {
+            const trimmed = value.trim();
+            if (/^https?:\/\//i.test(trimmed)) return trimmed;
+            if (trimmed.includes(".") && !trimmed.includes(" ")) return "https://" + trimmed;
+            return "https://www.google.com/search?q=" + encodeURIComponent(trimmed);
+        }
+
+        function loadTest(rawValue) {
+            const target = normalizeTarget(rawValue);
+            const base = cdnInput.value.replace(/\/+$/, "");
+            frame.src = base + "/embed.svg?backend=scramjet2&palette=gnmath#" + encodeTarget(target);
+            status.textContent = "loading " + target;
+        }
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            loadTest(targetInput.value);
+        });
+
+        window.addEventListener("message", (event) => {
+            if (event.data && event.data.type === "arctic-embed") {
+                status.textContent = event.data.status + (event.data.detail ? ": " + event.data.detail : "");
+            }
+        });
+    </script>
+</body>
+</html>
