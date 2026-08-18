@@ -697,15 +697,10 @@ function initAetherResearch() {
 
     const toolTargetKey = "aether-tool-target";
     const staticCdnBase = "https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/";
-    const staticProxyVersion = "rainbow-arctic-20260818";
-    const arcticEmbedBases = [
-        "https://cdn.jsdelivr.net/gh/sealiee11/arctic-static@main/embed.svg",
-        "https://testingcf.jsdelivr.net/gh/sealiee11/arctic-static@main/embed.svg",
-        "https://gcore.jsdelivr.net/gh/sealiee11/arctic-static@main/embed.svg",
-        "https://fastly.jsdelivr.net/gh/sealiee11/arctic-static@main/embed.svg"
-    ];
+    const staticProxyVersion = "rainbow-srcdoc-20260818";
     const arcticWisps = [""];
-    const arcticRouteCount = Math.max(arcticEmbedBases.length, arcticWisps.length);
+    const arcticRouteCount = Math.max(1, arcticWisps.length);
+    let staticScramjetHtmlPromise = null;
 
     function getStaticAssetUrl(file) {
         return staticCdnBase + file;
@@ -718,20 +713,30 @@ function initAetherResearch() {
         return "aw1." + btoa(text).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
     }
 
-    function getArcticUrl(target, baseIndex = 0) {
-        const routeIndex = baseIndex % arcticRouteCount;
-        const arcticEmbedBase = arcticEmbedBases[routeIndex % arcticEmbedBases.length];
-        const params = new URLSearchParams({ backend: "scramjet2", palette: "gnmath", sjv: staticProxyVersion });
-        const wisp = arcticWisps[routeIndex % arcticWisps.length];
-        if (wisp) params.set("wisp", wisp);
-        return arcticEmbedBase + "?" + params.toString() + "#" + encodeArcticTarget(target);
+    function getStaticScramjetHtml() {
+        if (!staticScramjetHtmlPromise) {
+            const helperUrl = getStaticAssetUrl("static-scramjet.html") + "?v=" + encodeURIComponent(staticProxyVersion);
+            staticScramjetHtmlPromise = fetch(helperUrl, { cache: "no-store" }).then(response => {
+                if (!response.ok) throw new Error("Research helper failed to load.");
+                return response.text();
+            });
+        }
+        return staticScramjetHtmlPromise;
     }
 
-
-
-    function writeStaticScramjetFrame(frame, target, baseIndex = 0) {
-        frame.removeAttribute("srcdoc");
-        frame.src = getArcticUrl(target, baseIndex);
+    async function writeStaticScramjetFrame(frame, target, baseIndex = 0) {
+        const helperHtml = await getStaticScramjetHtml();
+        const wisp = arcticWisps[baseIndex % arcticWisps.length] || "";
+        const injectedState = [
+            "window.__AETHER_STATIC_TARGET_HASH=" + JSON.stringify(encodeArcticTarget(target)) + ";",
+            "window.__AETHER_STATIC_BACKEND='scramjet2';",
+            "window.__AETHER_STATIC_WISP=" + JSON.stringify(wisp) + ";",
+            "window.__AETHER_STATIC_SCRAMJET_HREF=" + JSON.stringify(window.location.href) + ";"
+        ].join("");
+        const injectedScript = "<script>" + injectedState + "<\/script>";
+        frame.removeAttribute("src");
+        frame.srcdoc = "";
+        frame.srcdoc = helperHtml.replace("<head>", "<head>" + injectedScript);
     }
 
     const form = document.getElementById("uv-form");
@@ -915,9 +920,14 @@ function initAetherResearch() {
             clearTimeout(hardTimer);
         }
 
-        function loadArcticFrame() {
+        async function loadArcticFrame() {
             showPageLoader();
-            writeStaticScramjetFrame(tab.iframeEl, url, baseIndex);
+            try {
+                await writeStaticScramjetFrame(tab.iframeEl, url, baseIndex);
+            } catch {
+                setLoadingError(token, "Could not start the research helper.");
+                hidePageLoader();
+            }
         }
 
         function tryNextRoute(message) {
@@ -925,7 +935,7 @@ function initAetherResearch() {
             if (baseIndex >= arcticRouteCount - 1) return false;
             baseIndex += 1;
             errorEl.textContent = message || "Trying another route...";
-            loadArcticFrame();
+            void loadArcticFrame();
             return true;
         }
 
@@ -987,7 +997,7 @@ function initAetherResearch() {
                 }
             }, 60000);
 
-            loadArcticFrame();
+            await loadArcticFrame();
             tab.hasLoadedUrl = true;
             tab.currentUrl = url;
             tab.rawInput = input;
