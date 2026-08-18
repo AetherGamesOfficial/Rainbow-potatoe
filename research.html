@@ -697,10 +697,9 @@ function initAetherResearch() {
 
     const toolTargetKey = "aether-tool-target";
     const staticCdnBase = "https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/";
-    const staticProxyVersion = "rainbow-srcdoc-20260818";
+    const staticProxyVersion = "rainbow-svg-runtime-20260818";
     const arcticWisps = [""];
     const arcticRouteCount = Math.max(1, arcticWisps.length);
-    let staticScramjetHtmlPromise = null;
 
     function getStaticAssetUrl(file) {
         return staticCdnBase + file;
@@ -713,30 +712,16 @@ function initAetherResearch() {
         return "aw1." + btoa(text).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
     }
 
-    function getStaticScramjetHtml() {
-        if (!staticScramjetHtmlPromise) {
-            const helperUrl = getStaticAssetUrl("static-scramjet.html") + "?v=" + encodeURIComponent(staticProxyVersion);
-            staticScramjetHtmlPromise = fetch(helperUrl, { cache: "no-store" }).then(response => {
-                if (!response.ok) throw new Error("Research helper failed to load.");
-                return response.text();
-            });
-        }
-        return staticScramjetHtmlPromise;
+    function getStaticScramjetUrl(target, baseIndex = 0) {
+        const wisp = arcticWisps[baseIndex % arcticWisps.length] || "";
+        const params = new URLSearchParams({ backend: "scramjet2", palette: "gnmath", v: staticProxyVersion });
+        if (wisp) params.set("wisp", wisp);
+        return getStaticAssetUrl("static-scramjet.svg") + "?" + params.toString() + "#" + encodeArcticTarget(target);
     }
 
-    async function writeStaticScramjetFrame(frame, target, baseIndex = 0) {
-        const helperHtml = await getStaticScramjetHtml();
-        const wisp = arcticWisps[baseIndex % arcticWisps.length] || "";
-        const injectedState = [
-            "window.__AETHER_STATIC_TARGET_HASH=" + JSON.stringify(encodeArcticTarget(target)) + ";",
-            "window.__AETHER_STATIC_BACKEND='scramjet2';",
-            "window.__AETHER_STATIC_WISP=" + JSON.stringify(wisp) + ";",
-            "window.__AETHER_STATIC_SCRAMJET_HREF=" + JSON.stringify(window.location.href) + ";"
-        ].join("");
-        const injectedScript = "<script>" + injectedState + "<\/script>";
-        frame.removeAttribute("src");
-        frame.srcdoc = "";
-        frame.srcdoc = helperHtml.replace("<head>", "<head>" + injectedScript);
+    function writeStaticScramjetFrame(frame, target, baseIndex = 0) {
+        frame.removeAttribute("srcdoc");
+        frame.src = getStaticScramjetUrl(target, baseIndex);
     }
 
     const form = document.getElementById("uv-form");
@@ -920,14 +905,9 @@ function initAetherResearch() {
             clearTimeout(hardTimer);
         }
 
-        async function loadArcticFrame() {
+        function loadArcticFrame() {
             showPageLoader();
-            try {
-                await writeStaticScramjetFrame(tab.iframeEl, url, baseIndex);
-            } catch {
-                setLoadingError(token, "Could not start the research helper.");
-                hidePageLoader();
-            }
+            writeStaticScramjetFrame(tab.iframeEl, url, baseIndex);
         }
 
         function tryNextRoute(message) {
@@ -997,7 +977,7 @@ function initAetherResearch() {
                 }
             }, 60000);
 
-            await loadArcticFrame();
+            loadArcticFrame();
             tab.hasLoadedUrl = true;
             tab.currentUrl = url;
             tab.rawInput = input;
