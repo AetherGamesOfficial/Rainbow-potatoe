@@ -697,9 +697,15 @@ function initAetherResearch() {
 
     const toolTargetKey = "aether-tool-target";
     const staticCdnBase = "https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/";
-    const staticProxyVersion = "msvpanyl";
-    const arcticEmbedBase = staticCdnBase + "static-scramjet.html";
+    const staticProxyVersion = "rainbow-arctic-20260818";
+    const arcticEmbedBases = [
+        "https://cdn.jsdelivr.net/gh/sealiee11/arctic-static@main/embed.svg",
+        "https://testingcf.jsdelivr.net/gh/sealiee11/arctic-static@main/embed.svg",
+        "https://gcore.jsdelivr.net/gh/sealiee11/arctic-static@main/embed.svg",
+        "https://fastly.jsdelivr.net/gh/sealiee11/arctic-static@main/embed.svg"
+    ];
     const arcticWisps = [""];
+    const arcticRouteCount = Math.max(arcticEmbedBases.length, arcticWisps.length);
 
     function getStaticAssetUrl(file) {
         return staticCdnBase + file;
@@ -713,10 +719,10 @@ function initAetherResearch() {
     }
 
     function getArcticUrl(target, baseIndex = 0) {
-        const routeCount = arcticWisps.length;
-        const routeIndex = baseIndex % routeCount;
+        const routeIndex = baseIndex % arcticRouteCount;
+        const arcticEmbedBase = arcticEmbedBases[routeIndex % arcticEmbedBases.length];
         const params = new URLSearchParams({ backend: "scramjet2", palette: "gnmath", sjv: staticProxyVersion });
-        const wisp = arcticWisps[routeIndex];
+        const wisp = arcticWisps[routeIndex % arcticWisps.length];
         if (wisp) params.set("wisp", wisp);
         return arcticEmbedBase + "?" + params.toString() + "#" + encodeArcticTarget(target);
     }
@@ -916,7 +922,7 @@ function initAetherResearch() {
 
         function tryNextRoute(message) {
             if (token !== loadToken) return false;
-            if (baseIndex >= arcticWisps.length - 1) return false;
+            if (baseIndex >= arcticRouteCount - 1) return false;
             baseIndex += 1;
             errorEl.textContent = message || "Trying another route...";
             loadArcticFrame();
