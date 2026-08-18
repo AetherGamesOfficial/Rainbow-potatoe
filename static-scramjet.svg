@@ -35,6 +35,41 @@
       var rejectedRelays = new Set();
       var runId = 0;
 
+      function ensureHtmlCompat() {
+        var root = document.getElementById("static-scramjet-root");
+        var head = document.getElementById("static-scramjet-head");
+        if (!head && root) {
+          head = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
+          head.id = "static-scramjet-head";
+          head.style.display = "none";
+          root.appendChild(head);
+        }
+        try {
+          if (!document.body && root) {
+            Object.defineProperty(document, "body", {
+              configurable: true,
+              get: function () { return root; }
+            });
+          }
+        } catch (error) {}
+        try {
+          if (!document.head && head) {
+            Object.defineProperty(document, "head", {
+              configurable: true,
+              get: function () { return head; }
+            });
+          }
+        } catch (error) {}
+        try {
+          if (!document.documentElement.append) {
+            document.documentElement.append = function () {
+              var target = document.body || root || document.documentElement;
+              return target.append.apply(target, arguments);
+            };
+          }
+        } catch (error) {}
+      }
+
       function normalizeWisp(value) {
         if (typeof value !== "string") return null;
         var text = value.trim();
@@ -105,8 +140,11 @@
 
       async function getRuntime() {
         if (runtime) return runtime;
+        ensureHtmlCompat();
         var mod = await import(resolverUrl);
+        ensureHtmlCompat();
         await mod.r().catch(function () {});
+        ensureHtmlCompat();
         runtime = new mod.R(nextRelay, {
           onWispFailure: function (url) {
             var clean = normalizeWisp(url) || url;
