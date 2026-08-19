@@ -628,7 +628,6 @@
                     type="text"
                     placeholder="Search the web or type a URL..."
                     autocomplete="off"
-                    autofocus
                 />
             </form>
 
@@ -1007,7 +1006,7 @@ function initAetherResearch() {
     address.addEventListener("keydown", async (e) => {
         if (e.key !== "Enter") return;
         e.preventDefault();
-        await loadAddress();
+        await loadAddress(address.value);
     });
 
     function getLaunchParams() {
