@@ -1037,11 +1037,9 @@ function initAetherResearch() {
     }
 
     const params = getLaunchParams();
-    let storedGoto = "";
-    try { storedGoto = sessionStorage.getItem(toolTargetKey) || ""; } catch { storedGoto = ""; }
-    const goto = params.get("goto") || storedGoto;
+    const goto = params.get("goto") || "";
+    try { sessionStorage.removeItem(toolTargetKey); } catch {}
     if (goto) {
-        try { sessionStorage.removeItem(toolTargetKey); } catch {}
         address.value = goto;
         try { window.history.replaceState(null, "", window.location.pathname); } catch {}
         loadAddress(goto);
