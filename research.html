@@ -696,7 +696,7 @@ function initAetherResearch() {
 
     const toolTargetKey = "aether-tool-target";
     const staticCdnBase = "https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/";
-    const staticProxyVersion = "rainbow-svg-runtime-compat-20260818";
+    const staticProxyVersion = "rainbow-svg-srcdoc-launch-20260820";
     const arcticWisps = [""];
     const arcticRouteCount = Math.max(1, arcticWisps.length);
 
@@ -1012,6 +1012,14 @@ function initAetherResearch() {
     function getLaunchParams() {
         const params = new URLSearchParams();
 
+        const embeddedShellHref = () => {
+            try {
+                return window.frameElement?.ownerDocument?.location?.href || "";
+            } catch {
+                return "";
+            }
+        };
+
         const mergeParams = (source) => {
             if (!source) return;
             try {
@@ -1031,8 +1039,8 @@ function initAetherResearch() {
         };
 
         mergeParams(window.__AETHER_LAUNCH_HREF__);
+        mergeParams(embeddedShellHref());
         mergeParams(window.location.href);
-        mergeParams(document.referrer);
         return params;
     }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activities</title>
-    <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/fonts.min.js"></script>
 
     <style>
         html, body {
@@ -844,7 +844,7 @@
 
             await new Promise((resolve, reject) => {
                 const script = document.createElement("script");
-                script.src = "https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js";
+                script.src = "https://cdn.jsdelivr.net/gh/luminsdk/script@latest/fonts.min.js";
                 script.async = true;
                 script.onload = resolve;
                 script.onerror = () => reject(new Error("Lumin SDK failed to load."));

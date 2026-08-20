@@ -2,7 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 
 const repo = process.argv[2] || "AetherGamesOfficial/Rainbow-potatoe";
 const cdnBase = `https://cdn.jsdelivr.net/gh/${repo}@main/`;
-const buildStamp = "favicon-refresh-20260721";
+const buildStamp = "srcdoc-launch-fix-20260820";
 const pages = ["studyhub", "enrichment", "resources", "research", "settings", "loading", "arctic-test"];
 const navPages = "studyhub|enrichment|resources|research|settings";
 const shellBackground = `${cdnBase}aether%20background.png`;
@@ -10,6 +10,14 @@ const faviconImage = `${cdnBase}aether-favicon.png`;
 
 function toStaticLink(page, attrs, content) {
 	return `<a${attrs} href="${cdnBase}${page}.svg" target="_parent">${content}</a>`;
+}
+
+function escapeHtmlAttribute(value) {
+	return value
+		.replace(/&/g, "&amp;")
+		.replace(/"/g, "&quot;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;");
 }
 
 function convertStaticPaths(html) {
@@ -50,8 +58,6 @@ function convertStaticPaths(html) {
 }
 
 function svgDocument(title, html) {
-	const payload = Buffer.from(html).toString("base64");
-
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <!-- ${buildStamp} -->
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="position:fixed;inset:0;width:100%;height:100%;display:block;margin:0;padding:0;background:#121212 url('${shellBackground}') center / cover no-repeat;">
@@ -62,7 +68,7 @@ function svgDocument(title, html) {
     iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; margin: 0; padding: 0; display: block; background: #121212 url('${shellBackground}') center / cover no-repeat; }
   </style>
   <foreignObject x="0" y="0" width="100%" height="100%">
-    <iframe xmlns="http://www.w3.org/1999/xhtml" src="data:text/html;base64,${payload}" allow="autoplay; fullscreen; pointer-lock; gamepad"></iframe>
+    <iframe xmlns="http://www.w3.org/1999/xhtml" srcdoc="${escapeHtmlAttribute(html)}" allow="autoplay; fullscreen; gamepad"></iframe>
   </foreignObject>
 </svg>
 `;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- education-loading-handoff-20260816 -->
+<!-- srcdoc-launch-fix-20260820 -->
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="position:fixed;inset:0;width:100%;height:100%;display:block;margin:0;padding:0;background:#121212 url('https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png') center / cover no-repeat;">
   <title>resources</title>
   <style>
@@ -490,7 +490,7 @@
 &lt;/head&gt;
 &lt;body&gt;
     &lt;nav class=&quot;appleseed&quot;&gt;
-        &lt;a class=&quot;nav-action&quot;  title=&quot;Games&quot; aria-label=&quot;Games&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fenrichment.svg&quot; target=&quot;_parent&quot;&gt;
+        &lt;a class=&quot;nav-action&quot;  title=&quot;Games&quot; aria-label=&quot;Games&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/enrichment.svg&quot; target=&quot;_parent&quot;&gt;
             &lt;svg class=&quot;controller-svg&quot; aria-hidden=&quot;true&quot; viewBox=&quot;0 0 96 64&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
                 &lt;path d=&quot;M24 20C17 22 13 33 9 49C8 55 18 58 22 51L30 37H66L74 51C78 58 88 55 87 49C83 33 79 22 72 20C62 17 34 17 24 20Z&quot; stroke=&quot;white&quot; stroke-width=&quot;6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;
                 &lt;circle cx=&quot;31&quot; cy=&quot;30&quot; r=&quot;5&quot; fill=&quot;white&quot;/&gt;
@@ -500,10 +500,10 @@
                 &lt;path d=&quot;M44 27H49M57 27H62&quot; stroke=&quot;white&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot;/&gt;
             &lt;/svg&gt;
         &lt;/a&gt;
-        &lt;a class=&quot;homebutton&quot;  title=&quot;Home&quot; aria-label=&quot;Home&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fstudyhub.svg&quot; target=&quot;_parent&quot;&gt;
+        &lt;a class=&quot;homebutton&quot;  title=&quot;Home&quot; aria-label=&quot;Home&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/studyhub.svg&quot; target=&quot;_parent&quot;&gt;
             &lt;span class=&quot;home-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;home-chimney&quot;&gt;&lt;/span&gt;&lt;/span&gt;
         &lt;/a&gt;
-        &lt;a class=&quot;nav-action&quot;  title=&quot;Apps&quot; aria-label=&quot;Apps&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fresources.svg&quot; target=&quot;_parent&quot;&gt;
+        &lt;a class=&quot;nav-action&quot;  title=&quot;Apps&quot; aria-label=&quot;Apps&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/resources.svg&quot; target=&quot;_parent&quot;&gt;
             &lt;span class=&quot;apps-icon&quot; aria-hidden=&quot;true&quot;&gt;
                 &lt;span class=&quot;apps-square one&quot;&gt;&lt;/span&gt;
                 &lt;span class=&quot;apps-square two&quot;&gt;&lt;/span&gt;
@@ -511,7 +511,7 @@
                 &lt;span class=&quot;apps-plus&quot;&gt;&lt;/span&gt;
             &lt;/span&gt;
         &lt;/a&gt;
-        &lt;a class=&quot;nav-action settings-action&quot;  type=&quot;button&quot; title=&quot;Settings&quot; aria-label=&quot;Settings&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fsettings.svg&quot; target=&quot;_parent&quot;&gt;
+        &lt;a class=&quot;nav-action settings-action&quot;  type=&quot;button&quot; title=&quot;Settings&quot; aria-label=&quot;Settings&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/settings.svg&quot; target=&quot;_parent&quot;&gt;
             &lt;svg class=&quot;settings-svg&quot; aria-hidden=&quot;true&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
                 &lt;path d=&quot;M29 4H35L37 11.5C39.2 12.1 41.2 13 43 14.1L49.7 10.2L53.8 14.3L49.9 21C51 22.8 51.9 24.8 52.5 27L60 29V35L52.5 37C51.9 39.2 51 41.2 49.9 43L53.8 49.7L49.7 53.8L43 49.9C41.2 51 39.2 51.9 37 52.5L35 60H29L27 52.5C24.8 51.9 22.8 51 21 49.9L14.3 53.8L10.2 49.7L14.1 43C13 41.2 12.1 39.2 11.5 37L4 35V29L11.5 27C12.1 24.8 13 22.8 14.1 21L10.2 14.3L14.3 10.2L21 14.1C22.8 13 24.8 12.1 27 11.5L29 4Z&quot; fill=&quot;white&quot;/&gt;
                 &lt;circle cx=&quot;32&quot; cy=&quot;32&quot; r=&quot;9&quot; fill=&quot;#121212&quot; opacity=&quot;0.8&quot;/&gt;
@@ -607,7 +607,7 @@ const store = createAetherStore();
     document.documentElement.style.background = bg;
     document.body.style.background = bg;
     document.querySelectorAll('.settings-action').forEach(button =&gt; {
-        button.addEventListener('click', () =&gt; { window.parent.location.href = &quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/loading.svg?next=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FAetherGamesOfficial%2FRainbow-potatoe%40main%2Fsettings.svg&quot;; });
+        button.addEventListener('click', () =&gt; { window.parent.location.href = &quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/settings.svg&quot;; });
     });
 })();
 &lt;/script&gt;
@@ -623,6 +623,6 @@ const store = createAetherStore();
 
 
 
-" allow="autoplay; fullscreen; pointer-lock; gamepad" allowfullscreen="true"></iframe>
+" allow="autoplay; fullscreen; gamepad"></iframe>
   </foreignObject>
 </svg>

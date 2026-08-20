@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- favicon-refresh-20260721 -->
+<!-- srcdoc-launch-fix-20260820 -->
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="position:fixed;inset:0;width:100%;height:100%;display:block;margin:0;padding:0;background:#121212 url('https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png') center / cover no-repeat;">
   <title>arctic-test</title>
   <style>
@@ -8,6 +8,279 @@
     iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; margin: 0; padding: 0; display: block; background: #121212 url('https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png') center / cover no-repeat; }
   </style>
   <foreignObject x="0" y="0" width="100%" height="100%">
-    <iframe xmlns="http://www.w3.org/1999/xhtml" src="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCIgLz4KICAgIDxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIiAvPgogICAgPHRpdGxlPkFFVEhFUiBUZXN0PC90aXRsZT4KICAgIDxsaW5rIHJlbD0iaWNvbiIgdHlwZT0iaW1hZ2UvcG5nIiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvZ2gvQWV0aGVyR2FtZXNPZmZpY2lhbC9BZXRoZXJFZHVjYXRpb25TdGF0aWNAbWFpbi9hZXRoZXItZmF2aWNvbi5wbmciPgogICAgPHN0eWxlPgogICAgICAgIGh0bWwsCiAgICAgICAgYm9keSB7CiAgICAgICAgICAgIG1hcmdpbjogMDsKICAgICAgICAgICAgcGFkZGluZzogMDsKICAgICAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgICAgIGhlaWdodDogMTAwJTsKICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjsKICAgICAgICAgICAgYmFja2dyb3VuZDogIzEyMTIxMiB1cmwoImh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9BZXRoZXJHYW1lc09mZmljaWFsL0FldGhlckVkdWNhdGlvblN0YXRpY0BtYWluL2FldGhlciUyMGJhY2tncm91bmQucG5nIikgY2VudGVyIC8gY292ZXIgZml4ZWQgbm8tcmVwZWF0OwogICAgICAgICAgICBmb250LWZhbWlseTogIkNvdXJpZXIgTmV3IiwgQ291cmllciwgbW9ub3NwYWNlOwogICAgICAgICAgICBjb2xvcjogI2ZmZmZmZjsKICAgICAgICB9CgogICAgICAgIGJvZHk6OmJlZm9yZSB7CiAgICAgICAgICAgIGNvbnRlbnQ6ICIiOwogICAgICAgICAgICBwb3NpdGlvbjogZml4ZWQ7CiAgICAgICAgICAgIGluc2V0OiAwOwogICAgICAgICAgICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNDIpOwogICAgICAgICAgICBwb2ludGVyLWV2ZW50czogbm9uZTsKICAgICAgICAgICAgei1pbmRleDogMDsKICAgICAgICB9CgogICAgICAgIC5idWJibGVzIHsKICAgICAgICAgICAgcG9zaXRpb246IGZpeGVkOwogICAgICAgICAgICBpbnNldDogMDsKICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjsKICAgICAgICAgICAgcG9pbnRlci1ldmVudHM6IG5vbmU7CiAgICAgICAgICAgIHotaW5kZXg6IDE7CiAgICAgICAgfQoKICAgICAgICAuYnViYmxlIHsKICAgICAgICAgICAgcG9zaXRpb246IGFic29sdXRlOwogICAgICAgICAgICBib3JkZXItcmFkaXVzOiA5OTlweDsKICAgICAgICAgICAgZmlsdGVyOiBibHVyKDFweCk7CiAgICAgICAgICAgIG9wYWNpdHk6IDAuODU7CiAgICAgICAgICAgIGFuaW1hdGlvbjogZmxvYXR5IDEycyBlYXNlLWluLW91dCBpbmZpbml0ZSBhbHRlcm5hdGU7CiAgICAgICAgfQoKICAgICAgICAuYnViYmxlOm50aC1jaGlsZCgxKSB7IHdpZHRoOiAyNHB4OyBoZWlnaHQ6IDI0cHg7IGxlZnQ6IDglOyB0b3A6IDE4JTsgYmFja2dyb3VuZDogIzA1ZDllODsgYm94LXNoYWRvdzogMCAwIDE4cHggIzA1ZDllODsgfQogICAgICAgIC5idWJibGU6bnRoLWNoaWxkKDIpIHsgd2lkdGg6IDQycHg7IGhlaWdodDogNDJweDsgbGVmdDogNzglOyB0b3A6IDI4JTsgYmFja2dyb3VuZDogIzAwZmZkNTsgYm94LXNoYWRvdzogMCAwIDI0cHggIzAwZmZkNTsgYW5pbWF0aW9uLWRlbGF5OiAtMnM7IH0KICAgICAgICAuYnViYmxlOm50aC1jaGlsZCgzKSB7IHdpZHRoOiAzMHB4OyBoZWlnaHQ6IDMwcHg7IGxlZnQ6IDE4JTsgdG9wOiA3MiU7IGJhY2tncm91bmQ6ICM3ZDEzYzk7IGJveC1zaGFkb3c6IDAgMCAyMHB4ICM3ZDEzYzk7IGFuaW1hdGlvbi1kZWxheTogLTVzOyB9CiAgICAgICAgLmJ1YmJsZTpudGgtY2hpbGQoNCkgeyB3aWR0aDogMThweDsgaGVpZ2h0OiAxOHB4OyBsZWZ0OiA2MSU7IHRvcDogNjYlOyBiYWNrZ3JvdW5kOiAjMDhjNmZmOyBib3gtc2hhZG93OiAwIDAgMTZweCAjMDhjNmZmOyBhbmltYXRpb24tZGVsYXk6IC03czsgfQogICAgICAgIC5idWJibGU6bnRoLWNoaWxkKDUpIHsgd2lkdGg6IDM0cHg7IGhlaWdodDogMzRweDsgbGVmdDogODglOyB0b3A6IDc0JTsgYmFja2dyb3VuZDogIzZmMDBmZjsgYm94LXNoYWRvdzogMCAwIDI0cHggIzZmMDBmZjsgYW5pbWF0aW9uLWRlbGF5OiAtOXM7IH0KCiAgICAgICAgQGtleWZyYW1lcyBmbG9hdHkgewogICAgICAgICAgICBmcm9tIHsgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAwLCAwKSBzY2FsZSgxKTsgfQogICAgICAgICAgICB0byB7IHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMzRweCwgLTQ2cHgsIDApIHNjYWxlKDEuMTgpOyB9CiAgICAgICAgfQoKICAgICAgICAuYXBwbGVzZWVkIHsKICAgICAgICAgICAgcG9zaXRpb246IGZpeGVkOwogICAgICAgICAgICB0b3A6IDE4cHg7CiAgICAgICAgICAgIGxlZnQ6IDUwJTsKICAgICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpOwogICAgICAgICAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDUpOwogICAgICAgICAgICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoMTVweCk7CiAgICAgICAgICAgIC13ZWJraXQtYmFja2Ryb3AtZmlsdGVyOiBibHVyKDE1cHgpOwogICAgICAgICAgICBib3JkZXItcmFkaXVzOiAyMHB4OwogICAgICAgICAgICBwYWRkaW5nOiAxMHB4IDQ0cHg7CiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7CiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7CiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyOwogICAgICAgICAgICBib3JkZXI6IDRweCBzb2xpZCAjZmZmZmZmOwogICAgICAgICAgICB6LWluZGV4OiAxMDsKICAgICAgICAgICAgZ2FwOiAyNnB4OwogICAgICAgIH0KCiAgICAgICAgLm5hdi1idXR0b24gewogICAgICAgICAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDsKICAgICAgICAgICAgYm9yZGVyOiAwOwogICAgICAgICAgICBjb2xvcjogI2ZmZmZmZjsKICAgICAgICAgICAgY3Vyc29yOiBwb2ludGVyOwogICAgICAgICAgICBwYWRkaW5nOiAwOwogICAgICAgICAgICB3aWR0aDogNDZweDsKICAgICAgICAgICAgaGVpZ2h0OiA0NnB4OwogICAgICAgICAgICBkaXNwbGF5OiBncmlkOwogICAgICAgICAgICBwbGFjZS1pdGVtczogY2VudGVyOwogICAgICAgIH0KCiAgICAgICAgLm5hdi1idXR0b24gc3ZnIHsKICAgICAgICAgICAgd2lkdGg6IDM4cHg7CiAgICAgICAgICAgIGhlaWdodDogMzhweDsKICAgICAgICAgICAgZmlsbDogI2ZmZmZmZjsKICAgICAgICB9CgogICAgICAgIC53cmFwIHsKICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICB6LWluZGV4OiAyOwogICAgICAgICAgICBtaW4taGVpZ2h0OiAxMDAlOwogICAgICAgICAgICBkaXNwbGF5OiBncmlkOwogICAgICAgICAgICBncmlkLXRlbXBsYXRlLXJvd3M6IGF1dG8gMWZyOwogICAgICAgICAgICBwYWRkaW5nOiAxOTBweCAyOHB4IDI4cHg7CiAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgICAgIGdhcDogMTRweDsKICAgICAgICB9CgogICAgICAgIC5wYW5lbCB7CiAgICAgICAgICAgIHBvc2l0aW9uOiBmaXhlZDsKICAgICAgICAgICAgdG9wOiAxMTJweDsKICAgICAgICAgICAgbGVmdDogNTAlOwogICAgICAgICAgICB6LWluZGV4OiA5OwogICAgICAgICAgICB3aWR0aDogbWluKDk4MHB4LCBjYWxjKDEwMHZ3IC0gNDhweCkpOwogICAgICAgICAgICBtaW4taGVpZ2h0OiA2NHB4OwogICAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7CiAgICAgICAgICAgIGRpc3BsYXk6IGdyaWQ7CiAgICAgICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogbWlubWF4KDE4MHB4LCAxZnIpIDE0OHB4IDEwNHB4OwogICAgICAgICAgICBnYXA6IDEwcHg7CiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7CiAgICAgICAgICAgIHBhZGRpbmc6IDhweDsKICAgICAgICAgICAgYm9yZGVyOiA0cHggc29saWQgI2ZmZmZmZjsKICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMjRweDsKICAgICAgICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KTsKICAgICAgICAgICAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDE1cHgpOwogICAgICAgICAgICAtd2Via2l0LWJhY2tkcm9wLWZpbHRlcjogYmx1cigxNXB4KTsKICAgICAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICB9CgogICAgICAgIGlucHV0LAogICAgICAgIHNlbGVjdCwKICAgICAgICBidXR0b24udGVzdC1idXR0b24gewogICAgICAgICAgICBtaW4taGVpZ2h0OiA0NHB4OwogICAgICAgICAgICBib3JkZXI6IDA7CiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDE2cHg7CiAgICAgICAgICAgIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC4zNCk7CiAgICAgICAgICAgIGNvbG9yOiAjZmZmZmZmOwogICAgICAgICAgICBmb250OiBpbmhlcml0OwogICAgICAgICAgICBmb250LXNpemU6IDE2cHg7CiAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgfQoKICAgICAgICBpbnB1dCwKICAgICAgICBzZWxlY3QgewogICAgICAgICAgICBwYWRkaW5nOiAwIDE2cHg7CiAgICAgICAgICAgIG91dGxpbmU6IG5vbmU7CiAgICAgICAgfQoKICAgICAgICBpbnB1dDo6cGxhY2Vob2xkZXIgewogICAgICAgICAgICBjb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjYpOwogICAgICAgIH0KCiAgICAgICAgYnV0dG9uLnRlc3QtYnV0dG9uIHsKICAgICAgICAgICAgY3Vyc29yOiBwb2ludGVyOwogICAgICAgICAgICBmb250LXdlaWdodDogNzAwOwogICAgICAgIH0KCiAgICAgICAgLmZyYW1lLXNoZWxsIHsKICAgICAgICAgICAgbWluLWhlaWdodDogMDsKICAgICAgICAgICAgYm9yZGVyOiA0cHggc29saWQgI2ZmZmZmZjsKICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMjJweDsKICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjsKICAgICAgICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KTsKICAgICAgICAgICAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDE1cHgpOwogICAgICAgICAgICAtd2Via2l0LWJhY2tkcm9wLWZpbHRlcjogYmx1cigxNXB4KTsKICAgICAgICB9CgogICAgICAgIGlmcmFtZSB7CiAgICAgICAgICAgIHdpZHRoOiAxMDAlOwogICAgICAgICAgICBoZWlnaHQ6IDEwMCU7CiAgICAgICAgICAgIGJvcmRlcjogMDsKICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7CiAgICAgICAgICAgIGJhY2tncm91bmQ6ICMxMDEwMTQ7CiAgICAgICAgfQoKICAgICAgICAuc3RhdHVzIHsKICAgICAgICAgICAgbWFyZ2luLXRvcDogLThweDsKICAgICAgICAgICAgbWluLWhlaWdodDogMjJweDsKICAgICAgICAgICAgZm9udC1zaXplOiAxNHB4OwogICAgICAgICAgICBjb2xvcjogI2ZmZmZmZjsKICAgICAgICAgICAgdGV4dC1zaGFkb3c6IDAgMCA4cHggcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjY1KTsKICAgICAgICB9CgogICAgICAgIEBtZWRpYSAobWF4LXdpZHRoOiA3NjBweCkgewogICAgICAgICAgICAucGFuZWwgewogICAgICAgICAgICAgICAgdG9wOiAxMTJweDsKICAgICAgICAgICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMWZyOwogICAgICAgICAgICB9CgogICAgICAgICAgICAud3JhcCB7CiAgICAgICAgICAgICAgICBwYWRkaW5nLXRvcDogMzMwcHg7CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIC5hcHBsZXNlZWQgewogICAgICAgICAgICAgICAgd2lkdGg6IGNhbGMoMTAwJSAtIDUycHgpOwogICAgICAgICAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CiAgICA8ZGl2IGNsYXNzPSJidWJibGVzIiBhcmlhLWhpZGRlbj0idHJ1ZSI+CiAgICAgICAgPHNwYW4gY2xhc3M9ImJ1YmJsZSI+PC9zcGFuPgogICAgICAgIDxzcGFuIGNsYXNzPSJidWJibGUiPjwvc3Bhbj4KICAgICAgICA8c3BhbiBjbGFzcz0iYnViYmxlIj48L3NwYW4+CiAgICAgICAgPHNwYW4gY2xhc3M9ImJ1YmJsZSI+PC9zcGFuPgogICAgICAgIDxzcGFuIGNsYXNzPSJidWJibGUiPjwvc3Bhbj4KICAgIDwvZGl2PgoKICAgIDxuYXYgY2xhc3M9ImFwcGxlc2VlZCIgYXJpYS1sYWJlbD0iTmF2aWdhdGlvbiI+CiAgICAgICAgPGEgY2xhc3M9Im5hdi1idXR0b24iICBhcmlhLWxhYmVsPSJHYW1lcyIgaHJlZj0iaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL0FldGhlckdhbWVzT2ZmaWNpYWwvQWV0aGVyRWR1Y2F0aW9uU3RhdGljQG1haW4vZW5yaWNobWVudC5zdmciIHRhcmdldD0iX3BhcmVudCI+CiAgICAgICAgICAgIDxzdmcgdmlld0JveD0iMCAwIDY0IDY0IiBhcmlhLWhpZGRlbj0idHJ1ZSI+PHBhdGggZD0iTTE5IDI2aDI2YzggMCAxMyA3IDE1IDE4IDEgNi0yIDExLTcgMTEtNCAwLTctMy05LTdIMjBjLTIgNC01IDctOSA3LTUgMC04LTUtNy0xMSAyLTExIDctMTggMTUtMThabTQtOWgxOGMzIDAgNiAyIDYgNXYySDE3di0yYzAtMyAzLTUgNi01Wm0tNSAyMHY1aC01djVoLTR2LTVINHYtNWg1di01aDR2NWg1Wm0zMC0zYTQgNCAwIDEgMCAwIDggNCA0IDAgMCAwIDAtOFptOCA5YTMgMyAwIDEgMCAwIDYgMyAzIDAgMCAwIDAtNlpNNDAgMzZhMyAzIDAgMSAwIDAgNiAzIDMgMCAwIDAgMC02WiIvPjwvc3ZnPgogICAgICAgIDwvYT4KICAgICAgICA8YSBjbGFzcz0ibmF2LWJ1dHRvbiIgIGFyaWEtbGFiZWw9IkhvbWUiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9BZXRoZXJHYW1lc09mZmljaWFsL0FldGhlckVkdWNhdGlvblN0YXRpY0BtYWluL3N0dWR5aHViLnN2ZyIgdGFyZ2V0PSJfcGFyZW50Ij4KICAgICAgICAgICAgPHN2ZyB2aWV3Qm94PSIwIDAgNjQgNjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNOCAzMSAzMiAxMGwyNCAyMXYyNUgzOVYzOUgyNXYxN0g4VjMxWm0zNi0xOGgxMHYxNUw0NCAxOXYtNloiLz48L3N2Zz4KICAgICAgICA8L2E+CiAgICAgICAgPGEgY2xhc3M9Im5hdi1idXR0b24iICBhcmlhLWxhYmVsPSJUb29scyIgaHJlZj0iaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL0FldGhlckdhbWVzT2ZmaWNpYWwvQWV0aGVyRWR1Y2F0aW9uU3RhdGljQG1haW4vcmVzb3VyY2VzLnN2ZyIgdGFyZ2V0PSJfcGFyZW50Ij4KICAgICAgICAgICAgPHN2ZyB2aWV3Qm94PSIwIDAgNjQgNjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMTYgMTBhOCA4IDAgMSAxIDAgMTYgOCA4IDAgMCAxIDAtMTZabTMyIDBhOCA4IDAgMSAxIDAgMTYgOCA4IDAgMCAxIDAtMTZaTTE2IDM4YTggOCAwIDEgMSAwIDE2IDggOCAwIDAgMSAwLTE2Wm0zMiAwYTggOCAwIDEgMSAwIDE2IDggOCAwIDAgMSAwLTE2Wm0tMTIgNmg4di04aDh2OGg4djhoLTh2OGgtOHYtOGgtOHYtOFoiLz48L3N2Zz4KICAgICAgICA8L2E+CiAgICA8L25hdj4KCiAgICA8bWFpbiBjbGFzcz0id3JhcCI+CiAgICAgICAgPGZvcm0gY2xhc3M9InBhbmVsIiBpZD0idGVzdEZvcm0iPgogICAgICAgICAgICA8aW5wdXQgaWQ9InRhcmdldElucHV0IiB2YWx1ZT0iaHR0cHM6Ly9leGFtcGxlLmNvbSIgcGxhY2Vob2xkZXI9Imh0dHBzOi8vZXhhbXBsZS5jb20iIGF1dG9jb21wbGV0ZT0ib2ZmIiBzcGVsbGNoZWNrPSJmYWxzZSI+CiAgICAgICAgICAgIDxzZWxlY3QgaWQ9ImNkbklucHV0IiBhcmlhLWxhYmVsPSJDRE4gb3JpZ2luIj4KICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9zZWFsaWVlMTEvYXJjdGljLXN0YXRpY0BtYWluIj5qc0RlbGl2cjwvb3B0aW9uPgogICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT0iaHR0cHM6Ly90ZXN0aW5nY2YuanNkZWxpdnIubmV0L2doL3NlYWxpZWUxMS9hcmN0aWMtc3RhdGljQG1haW4iPnRlc3RpbmdjZjwvb3B0aW9uPgogICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT0iaHR0cHM6Ly9nY29yZS5qc2RlbGl2ci5uZXQvZ2gvc2VhbGllZTExL2FyY3RpYy1zdGF0aWNAbWFpbiI+Z2NvcmU8L29wdGlvbj4KICAgICAgICAgICAgPC9zZWxlY3Q+CiAgICAgICAgICAgIDxidXR0b24gY2xhc3M9InRlc3QtYnV0dG9uIiB0eXBlPSJzdWJtaXQiPnRlc3Q8L2J1dHRvbj4KICAgICAgICA8L2Zvcm0+CiAgICAgICAgPGRpdiBjbGFzcz0ic3RhdHVzIiBpZD0ic3RhdHVzIj5yZWFkeTwvZGl2PgogICAgICAgIDxzZWN0aW9uIGNsYXNzPSJmcmFtZS1zaGVsbCI+CiAgICAgICAgICAgIDxpZnJhbWUgaWQ9InRlc3RGcmFtZSIgYWxsb3c9ImF1dG9wbGF5OyBmdWxsc2NyZWVuOyBjbGlwYm9hcmQtcmVhZDsgY2xpcGJvYXJkLXdyaXRlOyBlbmNyeXB0ZWQtbWVkaWE7IHBpY3R1cmUtaW4tcGljdHVyZSI+PC9pZnJhbWU+CiAgICAgICAgPC9zZWN0aW9uPgogICAgPC9tYWluPgoKICAgIDxzY3JpcHQ+CiAgICAgICAgY29uc3QgZnJhbWUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgidGVzdEZyYW1lIik7CiAgICAgICAgY29uc3QgZm9ybSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJ0ZXN0Rm9ybSIpOwogICAgICAgIGNvbnN0IHRhcmdldElucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInRhcmdldElucHV0Iik7CiAgICAgICAgY29uc3QgY2RuSW5wdXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiY2RuSW5wdXQiKTsKICAgICAgICBjb25zdCBzdGF0dXMgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic3RhdHVzIik7CgogICAgICAgIGZ1bmN0aW9uIGVuY29kZVRhcmdldCh2YWx1ZSkgewogICAgICAgICAgICBjb25zdCBieXRlcyA9IG5ldyBUZXh0RW5jb2RlcigpLmVuY29kZSh2YWx1ZSk7CiAgICAgICAgICAgIGxldCB0ZXh0ID0gIiI7CiAgICAgICAgICAgIGZvciAoY29uc3QgYnl0ZSBvZiBieXRlcykgdGV4dCArPSBTdHJpbmcuZnJvbUNoYXJDb2RlKGJ5dGUpOwogICAgICAgICAgICByZXR1cm4gImF3MS4iICsgYnRvYSh0ZXh0KS5yZXBsYWNlKC9cKy9nLCAiLSIpLnJlcGxhY2UoL1wvL2csICJfIikucmVwbGFjZSgvPSskL2csICIiKTsKICAgICAgICB9CgogICAgICAgIGZ1bmN0aW9uIG5vcm1hbGl6ZVRhcmdldCh2YWx1ZSkgewogICAgICAgICAgICBjb25zdCB0cmltbWVkID0gdmFsdWUudHJpbSgpOwogICAgICAgICAgICBpZiAoL15odHRwcz86XC9cLy9pLnRlc3QodHJpbW1lZCkpIHJldHVybiB0cmltbWVkOwogICAgICAgICAgICBpZiAodHJpbW1lZC5pbmNsdWRlcygiLiIpICYmICF0cmltbWVkLmluY2x1ZGVzKCIgIikpIHJldHVybiAiaHR0cHM6Ly8iICsgdHJpbW1lZDsKICAgICAgICAgICAgcmV0dXJuICJodHRwczovL3d3dy5nb29nbGUuY29tL3NlYXJjaD9xPSIgKyBlbmNvZGVVUklDb21wb25lbnQodHJpbW1lZCk7CiAgICAgICAgfQoKICAgICAgICBmdW5jdGlvbiBsb2FkVGVzdChyYXdWYWx1ZSkgewogICAgICAgICAgICBjb25zdCB0YXJnZXQgPSBub3JtYWxpemVUYXJnZXQocmF3VmFsdWUpOwogICAgICAgICAgICBjb25zdCBiYXNlID0gY2RuSW5wdXQudmFsdWUucmVwbGFjZSgvXC8rJC8sICIiKTsKICAgICAgICAgICAgZnJhbWUuc3JjID0gYmFzZSArICIvZW1iZWQuc3ZnP2JhY2tlbmQ9c2NyYW1qZXQyJnBhbGV0dGU9Z25tYXRoIyIgKyBlbmNvZGVUYXJnZXQodGFyZ2V0KTsKICAgICAgICAgICAgc3RhdHVzLnRleHRDb250ZW50ID0gImxvYWRpbmcgIiArIHRhcmdldDsKICAgICAgICB9CgogICAgICAgIGZvcm0uYWRkRXZlbnRMaXN0ZW5lcigic3VibWl0IiwgKGV2ZW50KSA9PiB7CiAgICAgICAgICAgIGV2ZW50LnByZXZlbnREZWZhdWx0KCk7CiAgICAgICAgICAgIGxvYWRUZXN0KHRhcmdldElucHV0LnZhbHVlKTsKICAgICAgICB9KTsKCiAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIm1lc3NhZ2UiLCAoZXZlbnQpID0+IHsKICAgICAgICAgICAgaWYgKGV2ZW50LmRhdGEgJiYgZXZlbnQuZGF0YS50eXBlID09PSAiYXJjdGljLWVtYmVkIikgewogICAgICAgICAgICAgICAgc3RhdHVzLnRleHRDb250ZW50ID0gZXZlbnQuZGF0YS5zdGF0dXMgKyAoZXZlbnQuZGF0YS5kZXRhaWwgPyAiOiAiICsgZXZlbnQuZGF0YS5kZXRhaWwgOiAiIik7CiAgICAgICAgICAgIH0KICAgICAgICB9KTsKICAgIDwvc2NyaXB0Pgo8L2JvZHk+CjwvaHRtbD4K" allow="autoplay; fullscreen; pointer-lock; gamepad"></iframe>
+    <iframe xmlns="http://www.w3.org/1999/xhtml" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;AETHER Test&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether-favicon.png&quot;&gt;
+    &lt;style&gt;
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #121212 url(&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/aether%20background.png&quot;) center / cover fixed no-repeat;
+            font-family: &quot;Courier New&quot;, Courier, monospace;
+            color: #ffffff;
+        }
+
+        body::before {
+            content: &quot;&quot;;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.42);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bubbles {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(1px);
+            opacity: 0.85;
+            animation: floaty 12s ease-in-out infinite alternate;
+        }
+
+        .bubble:nth-child(1) { width: 24px; height: 24px; left: 8%; top: 18%; background: #05d9e8; box-shadow: 0 0 18px #05d9e8; }
+        .bubble:nth-child(2) { width: 42px; height: 42px; left: 78%; top: 28%; background: #00ffd5; box-shadow: 0 0 24px #00ffd5; animation-delay: -2s; }
+        .bubble:nth-child(3) { width: 30px; height: 30px; left: 18%; top: 72%; background: #7d13c9; box-shadow: 0 0 20px #7d13c9; animation-delay: -5s; }
+        .bubble:nth-child(4) { width: 18px; height: 18px; left: 61%; top: 66%; background: #08c6ff; box-shadow: 0 0 16px #08c6ff; animation-delay: -7s; }
+        .bubble:nth-child(5) { width: 34px; height: 34px; left: 88%; top: 74%; background: #6f00ff; box-shadow: 0 0 24px #6f00ff; animation-delay: -9s; }
+
+        @keyframes floaty {
+            from { transform: translate3d(0, 0, 0) scale(1); }
+            to { transform: translate3d(34px, -46px, 0) scale(1.18); }
+        }
+
+        .appleseed {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 10px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #ffffff;
+            z-index: 10;
+            gap: 26px;
+        }
+
+        .nav-button {
+            background: transparent;
+            border: 0;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0;
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+        }
+
+        .nav-button svg {
+            width: 38px;
+            height: 38px;
+            fill: #ffffff;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 2;
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            padding: 190px 28px 28px;
+            box-sizing: border-box;
+            gap: 14px;
+        }
+
+        .panel {
+            position: fixed;
+            top: 112px;
+            left: 50%;
+            z-index: 9;
+            width: min(980px, calc(100vw - 48px));
+            min-height: 64px;
+            transform: translateX(-50%);
+            display: grid;
+            grid-template-columns: minmax(180px, 1fr) 148px 104px;
+            gap: 10px;
+            align-items: center;
+            padding: 8px;
+            border: 4px solid #ffffff;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-sizing: border-box;
+        }
+
+        input,
+        select,
+        button.test-button {
+            min-height: 44px;
+            border: 0;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.34);
+            color: #ffffff;
+            font: inherit;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input,
+        select {
+            padding: 0 16px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        button.test-button {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .frame-shell {
+            min-height: 0;
+            border: 4px solid #ffffff;
+            border-radius: 22px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            background: #101014;
+        }
+
+        .status {
+            margin-top: -8px;
+            min-height: 22px;
+            font-size: 14px;
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.65);
+        }
+
+        @media (max-width: 760px) {
+            .panel {
+                top: 112px;
+                grid-template-columns: 1fr;
+            }
+
+            .wrap {
+                padding-top: 330px;
+            }
+
+            .appleseed {
+                width: calc(100% - 52px);
+                box-sizing: border-box;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;bubbles&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;span class=&quot;bubble&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;bubble&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;bubble&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;bubble&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;bubble&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;nav class=&quot;appleseed&quot; aria-label=&quot;Navigation&quot;&gt;
+        &lt;a class=&quot;nav-button&quot;  aria-label=&quot;Games&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/enrichment.svg&quot; target=&quot;_parent&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 64 64&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M19 26h26c8 0 13 7 15 18 1 6-2 11-7 11-4 0-7-3-9-7H20c-2 4-5 7-9 7-5 0-8-5-7-11 2-11 7-18 15-18Zm4-9h18c3 0 6 2 6 5v2H17v-2c0-3 3-5 6-5Zm-5 20v5h-5v5h-4v-5H4v-5h5v-5h4v5h5Zm30-3a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm8 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM40 36a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z&quot;/&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;nav-button&quot;  aria-label=&quot;Home&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/studyhub.svg&quot; target=&quot;_parent&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 64 64&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M8 31 32 10l24 21v25H39V39H25v17H8V31Zm36-18h10v15L44 19v-6Z&quot;/&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;nav-button&quot;  aria-label=&quot;Tools&quot; href=&quot;https://cdn.jsdelivr.net/gh/AetherGamesOfficial/Rainbow-potatoe@main/resources.svg&quot; target=&quot;_parent&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 64 64&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M16 10a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm32 0a8 8 0 1 1 0 16 8 8 0 0 1 0-16ZM16 38a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm32 0a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm-12 6h8v-8h8v8h8v8h-8v8h-8v-8h-8v-8Z&quot;/&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;main class=&quot;wrap&quot;&gt;
+        &lt;form class=&quot;panel&quot; id=&quot;testForm&quot;&gt;
+            &lt;input id=&quot;targetInput&quot; value=&quot;https://example.com&quot; placeholder=&quot;https://example.com&quot; autocomplete=&quot;off&quot; spellcheck=&quot;false&quot;&gt;
+            &lt;select id=&quot;cdnInput&quot; aria-label=&quot;CDN origin&quot;&gt;
+                &lt;option value=&quot;https://cdn.jsdelivr.net/gh/sealiee11/arctic-static@main&quot;&gt;jsDelivr&lt;/option&gt;
+                &lt;option value=&quot;https://testingcf.jsdelivr.net/gh/sealiee11/arctic-static@main&quot;&gt;testingcf&lt;/option&gt;
+                &lt;option value=&quot;https://gcore.jsdelivr.net/gh/sealiee11/arctic-static@main&quot;&gt;gcore&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;button class=&quot;test-button&quot; type=&quot;submit&quot;&gt;test&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;div class=&quot;status&quot; id=&quot;status&quot;&gt;ready&lt;/div&gt;
+        &lt;section class=&quot;frame-shell&quot;&gt;
+            &lt;iframe id=&quot;testFrame&quot; allow=&quot;autoplay; fullscreen; clipboard-read; clipboard-write; encrypted-media; picture-in-picture&quot;&gt;&lt;/iframe&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;script&gt;
+        const frame = document.getElementById(&quot;testFrame&quot;);
+        const form = document.getElementById(&quot;testForm&quot;);
+        const targetInput = document.getElementById(&quot;targetInput&quot;);
+        const cdnInput = document.getElementById(&quot;cdnInput&quot;);
+        const status = document.getElementById(&quot;status&quot;);
+
+        function encodeTarget(value) {
+            const bytes = new TextEncoder().encode(value);
+            let text = &quot;&quot;;
+            for (const byte of bytes) text += String.fromCharCode(byte);
+            return &quot;aw1.&quot; + btoa(text).replace(/\+/g, &quot;-&quot;).replace(/\//g, &quot;_&quot;).replace(/=+$/g, &quot;&quot;);
+        }
+
+        function normalizeTarget(value) {
+            const trimmed = value.trim();
+            if (/^https?:\/\//i.test(trimmed)) return trimmed;
+            if (trimmed.includes(&quot;.&quot;) &amp;&amp; !trimmed.includes(&quot; &quot;)) return &quot;https://&quot; + trimmed;
+            return &quot;https://www.google.com/search?q=&quot; + encodeURIComponent(trimmed);
+        }
+
+        function loadTest(rawValue) {
+            const target = normalizeTarget(rawValue);
+            const base = cdnInput.value.replace(/\/+$/, &quot;&quot;);
+            frame.src = base + &quot;/embed.svg?backend=scramjet2&amp;palette=gnmath#&quot; + encodeTarget(target);
+            status.textContent = &quot;loading &quot; + target;
+        }
+
+        form.addEventListener(&quot;submit&quot;, (event) =&gt; {
+            event.preventDefault();
+            loadTest(targetInput.value);
+        });
+
+        window.addEventListener(&quot;message&quot;, (event) =&gt; {
+            if (event.data &amp;&amp; event.data.type === &quot;arctic-embed&quot;) {
+                status.textContent = event.data.status + (event.data.detail ? &quot;: &quot; + event.data.detail : &quot;&quot;);
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" allow="autoplay; fullscreen; gamepad"></iframe>
   </foreignObject>
 </svg>
